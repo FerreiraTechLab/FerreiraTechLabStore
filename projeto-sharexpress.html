@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do ShareXpress</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para ícones (opcional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Lightbox CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery.js/2.8.0/css/lightgallery.min.css" rel="stylesheet">
+    <link rel="icon" href="assets/img/logo.ico" type="image/x-icon">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 0 20px;
+        }
+
+        .project-details {
+            flex-grow: 1;
+            margin-left: 20px; /* Espaço entre o ícone e o texto */
+        }
+
+        .project-header img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .project-header h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .project-header .btn {
+            background-color: #196FB6;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .project-header .btn:hover {
+            background-color: #155a8a;
+        }
+
+        .project-description {
+            padding: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            margin: 20px 20px;
+            border-radius: 10px;
+        }
+
+            .screenshots {
+                position: relative;
+                text-align: center;
+                padding: 30px;
+            }
+
+        #screenshots-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .screenshot-item {
+            display: none;
+            margin: 0 10px;
+        }
+
+        .screenshot-item img {
+            width: 500px;
+            height: 1000px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .arrow {
+            font-size: 36px;
+            color: #196FB6;
+            cursor: pointer;
+            user-select: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .arrow.left {
+            left: 0;
+        }
+
+        .arrow.right {
+            right: 0;
+        }
+
+
+        .changelog {
+            padding: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            margin: 20px 20px;
+            border-radius: 10px;
+        }
+
+        .changelog h3 {
+            margin-bottom: 20px;
+        }
+        .modal-content {
+            border-radius: 8px;
+        }
+
+        .modal-header {
+            border-bottom: none;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .btn-download {
+            background-color: #196FB6;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background-color: #155a8a;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Ferreira Tech Lab</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projects.html">Projetos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#doacoes">Doações</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Header -->
+    <section class="project-header">
+        <img src="assets/img/sharexpress/app-logo.png" alt="Ícone do ShareXpress">
+        <div class="project-details">
+            <h1>ShareXpress</h1>
+            <p>Uma solução eficiente para compartilhar arquivos e textos em múltiplas plataformas.</p>
+            <button type="button" class="btn btn-primary details-button" data-bs-toggle="modal" data-bs-target="#downloadModal">Obter</button>
+        </div>
+    </section>
+
+    <section class="screenshots">
+        <h2>Imagens do Aplicativo</h2>
+        <div id="screenshots-container">
+            <span class="arrow left" onclick="prevScreenshot()">&#10094;</span>
+            <div class="screenshot-item" id="screenshot1">
+                <img src="assets/img/sharexpress/captura1.png" alt="Captura de Tela 1">
+            </div>
+            <div class="screenshot-item" id="screenshot2">
+                <img src="assets/img/sharexpress/captura2.png" alt="Captura de Tela 2">
+            </div>
+            <div class="screenshot-item" id="screenshot3">
+                <img src="assets/img/sharexpress/captura3.png" alt="Captura de Tela 3">
+            </div>
+            <div class="screenshot-item" id="screenshot4">
+                <img src="assets/img/sharexpress/captura4.png" alt="Captura de Tela 4">
+            </div>
+            <div class="screenshot-item" id="screenshot5">
+                <img src="assets/img/sharexpress/captura5.png" alt="Captura de Tela 5">
+            </div>
+            <div class="screenshot-item" id="screenshot6">
+                <img src="assets/img/sharexpress/captura6.png" alt="Captura de Tela 6">
+            </div>
+            <span class="arrow right" onclick="nextScreenshot()">&#10095;</span>
+        </div>
+    </section>
+    
+    <section class="project-description">
+        <h2>Sobre o ShareXpress</h2>
+        <p>ShareXpress é um aplicativo Android que permite a transferência de arquivos entre dispositivos Android e PCs sem a necessidade de MTP (Media Transfer Protocol). Esta versão para Android é um port da aplicação original desenvolvida em Python utilizando Qt5, oferecendo uma alternativa eficiente para o compartilhamento de arquivos.</p>
+        <h3>Funcionalidades</h3>
+        <ul>
+            <li><strong>Transferência de Arquivos:</strong> Envie arquivos do seu dispositivo Android para um PC e vice-versa.</li>
+            <li><strong>Interface Amigável:</strong> Visualize o progresso da transferência de arquivos com barras de progresso em tempo real.</li>
+            <li><strong>Gerenciamento de Arquivos:</strong> O aplicativo permite a seleção e envio de múltiplos arquivos, bem como a visualização dos arquivos recebidos.</li>
+            <li><strong>Verificação de Espaço:</strong> O aplicativo verifica o espaço disponível no dispositivo antes de iniciar a transferência.</li>
+        </ul>
+
+        <h3>Requisitos</h3>
+        <ul>
+            <li><strong>Android:</strong> 6.0 (Marshmallow) ou superior</li>
+            <li><strong>Permissões:</strong> Acesso à leitura e escrita no armazenamento externo</li>
+            <li><strong>Linux:</strong> Fedora Linux 38 ou superior</li>
+        </ul>
+    </section>
+
+
+    <!-- Changelog -->
+    <section class="changelog">
+        <h2>Histórico de Versões</h2>
+
+        <h3>Versão 1.8</h3>
+        <ul>
+            <li>Implementação da funcionalidade de descoberta de servidores disponíveis na rede para Android e Python.</li>
+            <li>Correção de problemas de timeout e melhorias na comunicação entre o cliente Python e o servidor Kotlin.</li>
+            <li>Ajustes na interface do usuário para exibição correta dos servidores encontrados.</li>
+        </ul>
+
+        <h3>Versão 1.7</h3>
+        <ul>
+            <li><strong>Compartilhamento de Conteúdo da Área de Transferência:</strong> A versão de PC do ShareXpress agora suporta o compartilhamento de conteúdo da área de transferência. Você pode enviar o texto da área de transferência diretamente do seu PC para o servidor, assim como pode fazer com os arquivos.</li>
+            <li><strong>Melhoria na Interface:</strong> A interface de usuário foi otimizada para oferecer uma experiência mais intuitiva e fluida.</li>
+            <li><strong>Correção de Bugs:</strong> Diversos bugs foram corrigidos para melhorar a estabilidade e o desempenho do aplicativo.</li>
+            <li><strong>Versões Disponíveis:</strong> O ShareXpress está disponível para Android e PC. Use a versão de PC para uma integração mais robusta e funcionalidades adicionais em seu ambiente de desktop.</li>
+        </ul>
+
+        <h3>Versão 1.6</h3>
+        <ul>
+            <li><strong>Suporte a arquivos grandes:</strong> Implementado suporte para envio de arquivos maiores que 1GB. Agora, o aplicativo consegue processar e transferir grandes volumes de dados sem problemas.</li>
+            <li><strong>Nota:</strong> A versão mobile já está disponível, oferecendo a mesma robustez e confiabilidade no envio de arquivos grandes. Atualize para aproveitar essas melhorias e ter uma experiência mais estável e confiável com o aplicativo. Para mais detalhes e download, acesse ShareXpress Android.</li>
+        </ul>
+
+        <h3>Versão 1.5</h3>
+        <ul>
+            <li><strong>Exibição Aprimorada do Progresso:</strong> Porcentagem de Progresso: Agora é possível visualizar a porcentagem de progresso de cada arquivo durante a transferência, fornecendo uma visão mais clara do andamento. Tempo Estimado: Adicionada a exibição do tempo estimado restante para cada transferência de arquivo, ajudando o usuário a saber quanto tempo falta para concluir o processo.</li>
+            <li><strong>Atualizações Suaves da Interface:</strong> Implementação de técnicas para garantir que operações pesadas sejam realizadas em segundo plano, permitindo que a interface do usuário seja atualizada de maneira mais fluida e eficiente.</li>
+            <li><strong>Operações de Arquivo:</strong> Remoção de Arquivo: Agora é possível remover um arquivo da lista de transferência com um clique direito (ou ação semelhante), com a funcionalidade de remoção desativada durante as transferências ativas para evitar interrupções.</li>
+            <li><strong>Alertas de Status de Conexão:</strong> Inclusão de diálogos de alerta (AlertDialog) para informar o usuário sobre o status da conexão, falta de seleção de arquivos ou ausência de IP e porta.</li>
+            <li><strong>Correção de Travamento:</strong> Resolvido o problema de travamento da interface do usuário durante as transferências de arquivos, garantindo que o aplicativo continue responsivo.</li>
+            <li><strong>Gerenciamento de Permissões:</strong> Ajustadas as permissões necessárias para garantir que o aplicativo funcione corretamente em versões recentes do sistema operacional.</li>
+            <li><strong>Aprimoramentos de Desempenho:</strong> Melhorias no desempenho geral das transferências de arquivos, tornando o processo mais rápido e eficiente.</li>
+            <li><strong>Atualizações Visuais:</strong> Melhorias visuais na interface do usuário para uma experiência mais intuitiva e agradável.</li>
+        </ul>
+
+        <h3>Versão 1.4</h3>
+        <ul>
+            <li><strong>Adaptações no Cliente:</strong> O cliente foi modificado para se adaptar ao servidor do Android que está sendo desenvolvido em Kotlin, com melhor compatibilidade, ajustes na interface gráfica e melhorias na estabilidade e performance do cliente.</li>
+            <li><strong>Desenvolvimento da Versão Android:</strong> O desenvolvimento da versão Android começou, trazendo a mesma facilidade e eficiência do ShareXpress para dispositivos Android.</li>
+            <li><strong>Funcionalidades:</strong> Envio de arquivos entre dispositivos na mesma rede local, interface gráfica intuitiva, compatibilidade com diversos formatos de arquivos e adaptação automática ao servidor Android.</li>
+        </ul>
+
+        <h3>Versão 1.3</h3>
+        <ul>
+            <li><strong>Envio de Arquivos:</strong> Transfira arquivos de um dispositivo para outro de forma rápida e segura.</li>
+            <li><strong>Recebimento de Arquivos:</strong> Receba arquivos enviados por outros dispositivos com facilidade.</li>
+            <li><strong>Interface Gráfica Amigável:</strong> Uma interface intuitiva e fácil de usar, desenvolvida com PyQt5, garantindo uma experiência de usuário agradável.</li>
+            <li><strong>Propósito e Visão:</strong> Simplificar o processo de compartilhamento de arquivos, eliminando a necessidade de soluções complexas ou dependência de serviços de terceiros.</li>
+            <li><strong>Desenvolvimento e Tecnologias:</strong> Desenvolvido utilizando Python e PyQt5 para a interface gráfica, criando um aplicativo robusto e eficiente.</li>
+            <li><strong>Próximos Passos:</strong> Comprometidos em melhorar continuamente o ShareXpress e adicionar novas funcionalidades com base no feedback dos usuários, com planos de lançar a versão para Android.</li>
+            <li><strong>Agradecimentos:</strong> Agradecimentos a todos que contribuíram para o desenvolvimento e teste desta primeira versão.</li>
+            <li><strong>Como Obter:</strong> Siga as instruções fornecidas no README do projeto no GitHub para baixar e instalar o ShareXpress.</li>
+        </ul>
+
+
+        
+        <!-- Inclua mais versões conforme necessário -->
+    </section>
+    <!-- Modal -->
+    <div class="modal fade" id="downloadModal" tabindex="-1" aria-labelledby="downloadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="downloadModalLabel">Obter o ShareXpress</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p>Escolha a versão que deseja baixar:</p>
+                    <a href="https://github.com/wesleiferreira98/ShareXpress/releases/download/v1.8/sharexpress-1.8-1.fc40.x86_64.rpm" class="btn btn-download btn-lg mb-2" target="_blank">Download para Linux (.rpm)</a>
+                    <a href="https://github.com/FerreiraTechLab/ShareXpress_Android/releases/download/v1.8/app-release.apk" class="btn btn-download btn-lg" target="_blank">Download para Android (.apk)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery.js/2.8.0/lightgallery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery.js/2.8.0/lg-thumbnail.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery.js/2.8.0/lg-zoom.min.js"></script>
+
+    <script>
+        let currentScreenshotIndex = 0;
+
+        function showScreenshot(index) {
+            const screenshots = document.querySelectorAll('.screenshot-item');
+            if (index < 0 || index >= screenshots.length) return;
+            
+            screenshots.forEach((screenshot, i) => {
+                screenshot.style.display = (i === index) ? 'block' : 'none';
+            });
+
+            currentScreenshotIndex = index;
+        }
+
+        function prevScreenshot() {
+            const screenshots = document.querySelectorAll('.screenshot-item');
+            if (currentScreenshotIndex > 0) {
+                showScreenshot(currentScreenshotIndex - 1);
+            } else {
+                showScreenshot(screenshots.length - 1); // Loop back to the last screenshot
+            }
+        }
+
+        function nextScreenshot() {
+            const screenshots = document.querySelectorAll('.screenshot-item');
+            if (currentScreenshotIndex < screenshots.length - 1) {
+                showScreenshot(currentScreenshotIndex + 1);
+            } else {
+                showScreenshot(0); // Loop back to the first screenshot
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            showScreenshot(currentScreenshotIndex); // Show the first screenshot initially
+
+            lightGallery(document.querySelector('#screenshots-container'), {
+                selector: '.screenshot-item img',
+                download: false
+            });
+        });
+    </script>
+
+     <!-- Footer -->
+     <footer class="text-center text-white bg-dark py-4">
+        <p>© 2024 Ferreira Tech Lab. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>
+
+

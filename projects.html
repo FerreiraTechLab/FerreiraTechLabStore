@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferreira Tech Lab - Projetos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="assets/img/logo.ico" type="image/x-icon">
+    <!-- Custom CSS -->
+    <style>
+        .project-card {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        .project-details {
+            flex-grow: 1;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .details-button {
+            font-size: 1rem;
+            padding: 10px 20px;
+        }
+        /* Estilos personalizados */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .hero-section {
+            background: url('assets/img/hero.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 100px 0;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            margin-top: 20px;
+        }
+
+        .features-section {
+            padding: 50px 0;
+        }
+
+        .features-section .icon {
+            font-size: 2rem;
+            color: #196FB6;
+            margin-bottom: 20px;
+        }
+        
+        .navbar-brand img {
+            width: 40px; /* Ajuste o tamanho da imagem conforme necessário */
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="assets/img/logo.png" alt="Logo Ferreira Tech Lab">
+                Ferreira Tech Lab
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projetos">Projetos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#doacoes">Doações</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+     <!-- Hero Section -->
+     <section class="hero-section text-center">
+        <div class="container">
+            <h1>Nossos Projetos</h1>
+        </div>
+    </section>
+    <div class="container mt-5">
+    
+        <!-- Exemplo de projeto -->
+        <div class="project-card d-flex align-items-center">
+            <img src="assets/img/sharexpress/app-logo.png" alt="Ícone do Projeto" class="project-icon">
+            <div class="project-details">
+                <h3 class="project-title">ShareXpress</h3>
+                <p class="project-description">Uma solução eficiente para compartilhar arquivos e textos em múltiplas plataformas.</p>
+            </div>
+            <a href="projeto-sharexpress.html" class="btn btn-primary details-button">Ver detalhes</a>
+        </div>
+
+
+        <!-- Adicione mais projetos aqui -->
+        <div class="project-card d-flex align-items-center">
+            <img src="assets/img/areasalva/app-logo.png" alt="Ícone do Projeto" class="project-icon">
+            <div class="project-details">
+                <h3 class="project-title">Área Salva</h3>
+                <p class="project-description">Uma solução inovadora e segura para gerenciar e proteger suas informações da área de transferência com facilidade e confiança.</p>
+            </div>
+            <a href="#projetos" class="btn btn-primary details-button">Em breve</a>
+        </div>
+        
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
