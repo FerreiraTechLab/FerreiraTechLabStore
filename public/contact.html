@@ -10,10 +10,11 @@
     <!-- Font Awesome para ícones (opcional) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
+          body {
             font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-            padding: 20px;
+            background-color: #f4f7f9;
+            margin: 20px;
+            color: #333;
         }
 
         .navbar-brand img {
@@ -72,6 +73,111 @@
             color: #333;
             margin-bottom: 20px;
         }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #007bff;
+            top: 0;
+            bottom: 0;
+            left: 30px;
+            margin-left: 20px;
+        }
+        
+        .timeline-event {
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .timeline-event:hover {
+            background-color: #e9ecef;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .timeline-event::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #007bff;
+            border-radius: 50%;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .timeline-event h4 {
+            font-size: 1.5rem;
+            margin: 0 0 10px 0;
+            color: #007bff;
+        }
+        
+        .timeline-event ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            margin-left: 40px; /* Adiciona recuo para os itens de lista */
+        }
+        
+        .timeline-event li {
+            background: #f1f1f1;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+        
+        .timeline-event li::before {
+            content: '•';
+            font-size: 1.5em;
+            color: #007bff;
+            position: absolute;
+            left: -30px; /* Ajuste a posição do marcador */
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .timeline-event li:hover {
+            background-color: #e9ecef;
+        }
+        
+        .timeline-event li p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        /* Estilização para links */
+        .timeline-event a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .timeline-event a:hover {
+            text-decoration: underline;
+        }
+
+        .social-links a {
+            font-size: 2rem;
+            margin: 0 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -113,12 +219,73 @@
         <p>Domino diversas tecnologias, incluindo Python, Java, Kotlin, e frameworks de desenvolvimento web como Django e Flask. Também tenho experiência em desenvolvimento mobile com Android e sou o idealizador da Ferreira Tech Lab, onde crio soluções tecnológicas inovadoras para a comunidade.</p>
         <p>Estou sempre em busca de novos desafios e oportunidades para expandir meus conhecimentos e contribuir para o avanço da tecnologia.</p>
 
+        
+        <!-- Timeline Section -->
+        <h3>Minha Trajetória</h3>
+        <div class="timeline">
+            <div class="timeline-event">
+                <h4>2017</h4>
+                <ul>
+                    <li><p>Comecei a aprender Python sob a orientação de meus professores de matemática.</p></li>
+                </ul>
+            </div>
+            <div class="timeline-event">
+                <h4>2018</h4>
+                <ul>
+                    <li><p>Me aventurei no C++ por meio de documentação e cursos online.</p></li>
+                </ul>
+            </div>
+            <div class="timeline-event">
+                <h4>2019</h4>
+                <ul>
+                    <li><p>Ingressei na faculdade de Engenharia de Computação da FAINOR, completando 4 semestres.</p></li>
+                </ul>
+            </div>
+            <div class="timeline-event">
+                <h4>2020</h4>
+                <ul>
+                    <li><p>Transferi-me para o curso de Ciência da Computação na UESB.</p></li>
+                    <li><p>Iniciei estágio em Robótica na CNSFS.</p></li>
+                </ul>
+            </div>
+            <div class="timeline-event">
+                <h4>2021</h4>
+                <ul>
+                    <li><p>Participei do programa de iniciação científica LARA, ajudando a criar o framework <a href="https://microbotpy.web.app/" target="_blank">MicrobotPy</a> para programação de robôs com ESP-32. <a href="https://github.com/wesleiferreira98/LARA" target="_blank">GitHub do LARA</a>.</p></li>
+                </ul>
+            </div>
+            <div class="timeline-event">
+                <h4>2022</h4>
+                <ul>
+                    <li><p>Apresentei um projeto de carro autônomo na SeComp 2022.</p></li>
+                </ul>
+            </div>
+            <div class="timeline-event">
+                <h4>2023</h4>
+                <ul>
+                    <li><p>Concluí o estágio na CNSFS.</p></li>
+                    <li><p>Ministrei um minicurso sobre Linux na Semana de Integração de 2023.1.</p></li>
+                    <li><p>Ministrei minicursos de Python e desenvolvimento web na SeComp 2023.</p></li>
+                    <li><p>Ingressei em um estágio na OPSS (Otimização, Programação e Simulação de Sistemas), onde fui responsável pelo desenvolvimento de aplicativos mobile.</p></li>
+                </ul>
+            </div>
+            <div class="timeline-event">
+                <h4>2024</h4>
+                <ul>
+                    <li><p>Concluí o estágio na OPSS.</p></li>
+                    <li><p>Participei do programa de residência de software RESTIC 36. Na trilha de Ciência de dados.</p></li>
+                    <li><p>Comecei a desenvolver meu TCC em segurança de redes elétricas.</p></li>
+                </ul>
+            </div>
+        </div>
 
+        <!-- Social Links -->
         <h3>Conecte-se comigo</h3>
         <div class="social-links">
             <a href="https://www.linkedin.com/in/weslei-ferreira-64a123208/" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/wesleiferreira98" target="_blank"><i class="fab fa-github"></i></a>
         </div>
+    </div>
     </div>
 
     <!-- Bootstrap JS -->
