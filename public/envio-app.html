@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envio de Aplicativo - Ferreira Tech Lab</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="assets/img/logo.ico" type="image/x-icon">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .upload-container {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .upload-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .upload-header img {
+            width: 80px;
+            margin-bottom: 10px;
+        }
+
+        .upload-header h1 {
+            font-size: 1.5rem;
+            color: #196FB6;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            width: 100%;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="upload-container">
+        <div class="upload-header">
+            <img src="assets/img/logo.png" alt="Logo Ferreira Tech Lab">
+            <h1>Enviar Aplicativo</h1>
+        </div>
+        <form id="appUploadForm">
+            <div class="form-group">
+                <label for="appName">Nome do Aplicativo</label>
+                <input type="text" id="appName" class="form-control" placeholder="Digite o nome do aplicativo" required>
+            </div>
+            <div class="form-group">
+                <label for="appDescription">Descrição</label>
+                <textarea id="appDescription" class="form-control" rows="3" placeholder="Digite uma breve descrição do aplicativo" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="appCategory">Categoria</label>
+                <select id="appCategory" class="form-control" required>
+                    <option value="" disabled selected>Selecione a categoria</option>
+                    <option value="utilitarios">Utilitários</option>
+                    <option value="educacao">Educação</option>
+                    <option value="entretenimento">Entretenimento</option>
+                    <option value="jogos">Jogos</option>
+                    <option value="outros">Outros</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="appLogo">Ícone do Aplicativo (PNG/JPG)</label>
+                <input type="file" id="appLogo" class="form-control" accept="image/png, image/jpeg" required>
+            </div>
+            <div class="form-group">
+                <label for="appApk">Arquivo APK</label>
+                <input type="file" id="appApk" class="form-control" accept=".apk" required>
+            </div>
+            <div class="form-group">
+                <label for="appScreenshots">Capturas de Tela (PNG/JPG, até 5 imagens)</label>
+                <input type="file" id="appScreenshots" class="form-control" accept="image/png, image/jpeg" multiple>
+            </div>
+            <div class="form-group">
+                <label for="appRepoLink">Link do Repositório (GitHub/GitLab/Bitbucket)</label>
+                <input type="url" id="appRepoLink" class="form-control" placeholder="https://github.com/seu-repositorio" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar Aplicativo</button>
+        </form>
+        <div class="back-link">
+            <a href="perfil-desenvolvedor.html">Voltar ao perfil</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- App Upload JS -->
+    <script src="envio-app.js"></script>
+</body>
+
+</html>

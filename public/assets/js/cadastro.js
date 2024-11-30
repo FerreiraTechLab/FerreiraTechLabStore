@@ -10,11 +10,19 @@ devForm.addEventListener("submit", function (event) {
     const email = document.getElementById("email").value;
     const phone = document.getElementById("phone").value;
     const github = document.getElementById("github").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
     const bio = document.getElementById("bio").value;
 
-    // Validação simples
-    if (!name || !email || !phone || !github || !bio) {
+    // Validação básica
+    if (!name || !email || !phone || !github || !password || !confirmPassword || !bio) {
         alert("Por favor, preencha todos os campos.");
+        return;
+    }
+
+    // Validação da senha
+    if (password !== confirmPassword) {
+        alert("As senhas não correspondem. Tente novamente.");
         return;
     }
 
@@ -24,6 +32,7 @@ devForm.addEventListener("submit", function (event) {
         email,
         phone,
         github,
+        password, // A senha geralmente deve ser criptografada no backend
         bio,
     };
 
