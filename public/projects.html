@@ -10,11 +10,37 @@
     <link rel="icon" href="assets/img/logo.ico" type="image/x-icon">
     <!-- Custom CSS -->
     <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .hero-section {
+            background: url('assets/img/hero.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 40px 0 20px;
+            color: #196FB6;
+        }
+
         .project-card {
+            background: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            margin-bottom: 20px;
+            margin: 20px 0;
             transition: transform 0.3s;
         }
 
@@ -23,13 +49,10 @@
         }
 
         .project-icon {
-            width: 50px;
-            height: 50px;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
             margin-right: 20px;
-        }
-
-        .project-details {
-            flex-grow: 1;
         }
 
         .project-title {
@@ -41,42 +64,12 @@
             font-size: 1rem;
             padding: 10px 20px;
         }
-        /* Estilos personalizados */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-        }
 
-        .hero-section {
-            background: url('assets/img/hero.jpg') no-repeat center center;
-            background-size: cover;
+        footer {
+            background-color: #343a40;
             color: white;
-            padding: 100px 0;
-        }
-
-        .hero-section h1 {
-            font-size: 3.5rem;
-            font-weight: bold;
-        }
-
-        .hero-section p {
-            font-size: 1.25rem;
-            margin-top: 20px;
-        }
-
-        .features-section {
-            padding: 50px 0;
-        }
-
-        .features-section .icon {
-            font-size: 2rem;
-            color: #196FB6;
-            margin-bottom: 20px;
-        }
-        
-        .navbar-brand img {
-            width: 40px; /* Ajuste o tamanho da imagem conforme necessário */
-            margin-right: 10px;
+            padding: 20px 0;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -84,9 +77,9 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
+        <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="assets/img/logo.png" alt="Logo Ferreira Tech Lab">
+                <img src="assets/img/logo.png" alt="Logo Ferreira Tech Lab" style="width: 40px;">
                 Ferreira Tech Lab
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,52 +95,79 @@
             </div>
         </div>
     </nav>
-     <!-- Hero Section -->
-     <section class="hero-section text-center">
+
+    <!-- Hero Section -->
+    <section class="hero-section">
         <div class="container">
             <h1>Nossos Projetos</h1>
         </div>
     </section>
-    <div class="container mt-5">
-    
-        <!-- Exemplo de projeto -->
-        <div class="project-card d-flex align-items-center">
-            <img src="assets/img/sharexpress/app-logo.png" alt="Ícone do Projeto" class="project-icon">
-            <div class="project-details">
-                <h3 class="project-title">ShareXpress</h3>
-                <p class="project-description">Uma solução eficiente para compartilhar arquivos e textos em múltiplas plataformas.</p>
+
+    <!-- Categorias -->
+    <div class="container-fluid mt-5">
+        <!-- Categoria: Utilitários -->
+        <h2 class="category-title">Utilitários</h2>
+        <div class="row">
+            <!-- Projeto 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card d-flex align-items-center">
+                    <img src="assets/img/sharexpress/app-logo.png" alt="Ícone do Projeto" class="project-icon">
+                    <div>
+                        <h3 class="project-title">ShareXpress</h3>
+                        <p class="project-description">Uma solução eficiente para compartilhar arquivos e textos em múltiplas plataformas.</p>
+                        <a href="projeto-sharexpress.html" class="btn btn-primary details-button">Ver detalhes</a>
+                    </div>
+                </div>
             </div>
-            <a href="projeto-sharexpress.html" class="btn btn-primary details-button">Ver detalhes</a>
+
+            <!-- Projeto 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card d-flex align-items-center">
+                    <img src="assets/img/areasalva/app-logo.png" alt="Ícone do Projeto" class="project-icon">
+                    <div>
+                        <h3 class="project-title">Área Salva</h3>
+                        <p class="project-description">Uma solução para gerenciar e proteger informações da área de transferência.</p>
+                        <a href="projeto-areasalva.html" class="btn btn-primary details-button">Ver detalhes</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projeto 3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card d-flex align-items-center">
+                    <img src="assets/img/pdfshield/app-logo.png" alt="Ícone do Projeto" class="project-icon">
+                    <div>
+                        <h3 class="project-title">PDF Shield</h3>
+                        <p class="project-description">Proteja e visualize documentos PDF com segurança.</p>
+                        <a href="projeto-pdfshield.html" class="btn btn-primary details-button">Ver detalhes</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <!-- Categoria: Em Breve -->
+        <h2 class="category-title">Em Breve</h2>
+        <div class="row">
+            <!-- Projeto Em Breve -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card d-flex align-items-center">
+                    <img src="assets/img/torrentwave/app-logo.png" alt="Ícone do Projeto" class="project-icon">
+                    <div>
+                        <h3 class="project-title">TorrentWave</h3>
+                        <p class="project-description">Seu app de torrent para mobile, rápido e eficiente.</p>
+                        <a href="#projetos" class="btn btn-secondary details-button">Em breve</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <!-- Adicione mais projetos aqui -->
-        <div class="project-card d-flex align-items-center">
-            <img src="assets/img/areasalva/app-logo.png" alt="Ícone do Projeto" class="project-icon">
-            <div class="project-details">
-                <h3 class="project-title">Área Salva</h3>
-                <p class="project-description">Uma solução inovadora e segura para gerenciar e proteger suas informações da área de transferência com facilidade e confiança.</p>
-            </div>
-            <a href="projeto-areasalva.html" class="btn btn-primary details-button">Ver detalhes</a>
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container-fluid">
+            <p>© 2024 Ferreira Tech Lab. Todos os direitos reservados.</p>
         </div>
-
-        <div class="project-card d-flex align-items-center">
-            <img src="assets/img/pdfshield/app-logo.png" alt="Ícone do Projeto" class="project-icon">
-            <div class="project-details">
-                <h3 class="project-title">PDF Shield</h3>
-                <p class="project-description">Proteja e visualize seus documentos PDF com segurança e simplicidade.</p>
-            </div>
-            <a href="projeto-pdfshield.html" class="btn btn-primary details-button">Ver detalhes</a>
-        </div>
-        
-        <div class="project-card d-flex align-items-center">
-            <img src="assets/img/torrentwave/app-logo.png" alt="Ícone do Projeto" class="project-icon">
-            <div class="project-details">
-                <h3 class="project-title">TorrentWave</h3>
-                <p class="project-description">Seu app de torrent para mobile, oferecendo uma experiência rápida e eficiente em qualquer lugar.</p>
-            </div>
-            <a href="#projetos" class="btn btn-primary details-button">Em breve</a>
-        </div>
+    </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
