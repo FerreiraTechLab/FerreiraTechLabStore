@@ -11,71 +11,142 @@
     <!-- Custom CSS -->
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #f0f4f8;
             font-family: 'Arial', sans-serif;
         }
 
         .profile-header {
-            background-color: #196FB6;
+            background-color: #007BFF;
             color: white;
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
             border-radius: 8px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .profile-avatar {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #logoutButton {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            color: #007BFF;
+            border: 1px solid #007BFF;
+            border-radius: 20px;
+            padding: 5px 15px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        #editAppModal .modal-dialog {
+            max-width: 80%; /* Ajuste o valor conforme necessário */
+        }
+        #logoutButton:hover {
+            background-color: #007BFF;
+            color: white;
         }
 
         .tabs-container {
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .tab-pane {
-            padding: 20px;
-            background: #fff;
+            padding: 25px;
+            background: #ffffff;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .app-card {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 15px;
-            background: #f8f9fa;
+            padding: 15px;
+            background: #ffffff;
             border: 1px solid #ddd;
             border-radius: 8px;
             margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+        }
+
+        .app-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .app-card img {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             margin-right: 15px;
+            border-radius: 8px;
+            object-fit: cover;
         }
 
         .app-actions button {
             margin-left: 5px;
         }
 
+        button,
+        input {
+            outline: none;
+        }
+
         .btn-primary,
         .btn-danger {
             margin-top: 10px;
         }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover, .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 
 <body>
+    
+      
     <div class="container mt-5">
         <!-- Profile Header -->
         <div class="profile-header">
             <img src="assets/img/developer-avatar.png" alt="Avatar" class="profile-avatar">
             <h1 id="developerName">Nome do Desenvolvedor</h1>
             <p id="developerEmail">seuemail@exemplo.com</p>
+            <button id="logoutButton">Sair</button>
         </div>
 
         <!-- Tabs -->
@@ -95,7 +166,7 @@
                 <!-- Meus Apps -->
                 <div class="tab-pane fade show active" id="apps" role="tabpanel">
                     <h3>Meus Aplicativos</h3>
-                    <button class="btn btn-primary" id="addAppButton">Adicionar Novo App</button>
+                    <a class="btn btn-primary" id="addAppButton"  href="envio-app.html">Adicionar Novo App</a>
                     <div id="appsList" class="mt-3">
                         <!-- Os aplicativos serão listados aqui dinamicamente -->
                     </div>
@@ -137,11 +208,125 @@
             </div>
         </div>
     </div>
+    <div id="editAppModal" class="modal fade" tabindex="-1" aria-labelledby="editAppModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editAppModalLabel">Editar Aplicativo</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+              <form id="editAppForm">
+                <div class="mb-3">
+                  <label for="editAppName" class="form-label">Nome</label>
+                  <input type="text" id="editAppName" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="editAppDescription" class="form-label">Descrição</label>
+                  <textarea id="editAppDescription" class="form-control" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="editAppCategory" class="form-label">Categoria</label>
+                  <select id="editAppCategory" class="form-select" required>
+                    <option value="" disabled selected>Selecione a categoria</option>
+                    <option value="utilitarios">Utilitários</option>
+                    <option value="educacao">Educação</option>
+                    <option value="entretenimento">Entretenimento</option>
+                    <option value="jogos">Jogos</option>
+                    <option value="outros">Outros</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="editAppLicense" class="form-label">Licença</label>
+                  <select id="editAppLicense" class="form-select" required>
+                    <option value="" disabled selected>Selecione a licença</option>
+                    <!-- Licenças GPL -->
+                    <option value="GPL-1.0">GPL 1.0</option>
+                    <option value="GPL-2.0">GPL 2.0</option>
+                    <option value="GPL-3.0">GPL 3.0</option>
+                    <option value="LGPL-2.1">LGPL 2.1</option>
+                    <option value="LGPL-3.0">LGPL 3.0</option>
 
+                    <!-- Licenças BSD -->
+                    <option value="BSD-2-Clause">BSD 2-Clause</option>
+                    <option value="BSD-3-Clause">BSD 3-Clause</option>
+                    
+                    <!-- Licenças MIT -->
+                    <option value="MIT">MIT</option>
+
+                    <!-- Licenças Apache -->
+                    <option value="Apache-1.0">Apache 1.0</option>
+                    <option value="Apache-1.1">Apache 1.1</option>
+                    <option value="Apache-2.0">Apache 2.0</option>
+                    
+                    <!-- Licenças Mozilla -->
+                    <option value="MPL-1.1">MPL 1.1</option>
+                    <option value="MPL-2.0">MPL 2.0</option>
+                    
+                    <!-- Licenças Creative Commons -->
+                    <option value="CC0-1.0">CC0 1.0 (Domínio Público)</option>
+                    <option value="CC-BY-4.0">CC BY 4.0</option>
+                    <option value="CC-BY-SA-4.0">CC BY-SA 4.0</option>
+
+                    <!-- Licenças Eclipse -->
+                    <option value="EPL-1.0">EPL 1.0</option>
+                    <option value="EPL-2.0">EPL 2.0</option>
+                    
+                    <!-- Licenças de domínio público -->
+                    <option value="Unlicense">Unlicense</option>
+                    <option value="Public-Domain">Domínio Público</option>
+
+                    <!-- Licenças permissivas -->
+                    <option value="ISC">ISC</option>
+                    <option value="Zlib">Zlib</option>
+
+                    <!-- Licenças Proprietárias -->
+                    <option value="Proprietaria">Proprietária</option>
+
+                    <!-- Outro -->
+                    <option value="Outro">Outro</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="editAppLogoUrl" class="form-label">Logo URL</label>
+                  <input type="url" id="editAppLogoUrl" class="form-control">
+                </div>
+                <div class="mb-3">
+                  <label for="editAppRepoLink" class="form-label">Link do Repositório</label>
+                  <input type="url" id="editAppRepoLink" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="editAppVersion" class="form-label">Versão</label>
+                  <input type="text" id="editAppVersion" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="editAppChangelog" class="form-label">Changelog</label>
+                  <textarea id="editAppChangelog" class="form-control" rows="3" required></textarea>
+                </div>
+                <!-- Novo: Visualizar e alterar logo -->
+                <div class="mb-3">
+                    <label for="editAppLogo" class="form-label">Logo Atual</label>
+                    <img id="appLogoPreview" src="" alt="Logo do App" class="img-thumbnail mb-3" style="max-height: 150px;">
+                    <input type="file" id="editAppLogo" class="form-control">
+                </div>
+                <!-- Novo: Upload do APK -->
+                <div class="mb-3">
+                    <label for="editAppApk" class="form-label">Novo APK</label>
+                    <input type="file" id="editAppApk" class="form-control">
+                </div>
+                <button id="saveAppChanges" class="btn btn-success">Salvar Alterações</button>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Arquivo JS -->
-    <script src="assets/js/perfil-dev.js"></script>
+    <script type="module" src="assets/js/perfil-dev.js"></script>
 </body>
 
 </html>

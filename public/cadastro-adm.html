@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Desenvolvedor</title>
+    <title>Cadastro de Administrador</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="assets/img/logo.ico" type="image/x-icon">
@@ -45,23 +45,15 @@
 <body>
     <!-- Formulário -->
     <div class="form-container">
-        <h1 class="form-title text-center">Cadastro de Desenvolvedor</h1>
-        <form id="devForm">
+        <h1 class="form-title text-center">Cadastro de Administrador</h1>
+        <form id="adminForm">
             <div class="mb-3">
                 <label for="name" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" id="name" placeholder="Seu nome completo" required>
+                <input type="text" class="form-control" id="name" placeholder="Nome completo" required>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com" required>
-            </div>
-            <div class="mb-3">
-                <label for="phone" class="form-label">Telefone</label>
-                <input type="tel" class="form-control" id="phone" placeholder="(xx) xxxx-xxxx" required>
-            </div>
-            <div class="mb-3">
-                <label for="github" class="form-label">GitHub</label>
-                <input type="url" class="form-control" id="github" placeholder="https://github.com/seuperfil" required>
+                <input type="email" class="form-control" id="email" placeholder="email@exemplo.com" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Senha</label>
@@ -69,16 +61,7 @@
             </div>
             <div class="mb-3">
                 <label for="confirmPassword" class="form-label">Confirmar Senha</label>
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Repita sua senha" required>
-            </div>
-            <div class="mb-3">
-                <label for="profilePicture" class="form-label">Foto de Perfil</label>
-                <input type="file" class="form-control" id="profilePicture" accept="image/*" required>
-                <small class="form-text text-muted">Envie uma foto de perfil no formato JPG ou PNG.</small>
-            </div>            
-            <div class="mb-3">
-                <label for="bio" class="form-label">Biografia</label>
-                <textarea class="form-control" id="bio" rows="4" placeholder="Fale um pouco sobre você" required></textarea>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Repita a senha" required>
             </div>
             <button type="submit" class="btn btn-primary btn-submit w-100">Cadastrar</button>
         </form>
@@ -87,7 +70,7 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Arquivo JS -->
-    <script type="module" src="assets/js/cadastro.js"></script>
+    <script type="module" src="assets/js/cadastro-admin.js"></script>
 </body>
 
 </html>

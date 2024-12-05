@@ -71,6 +71,10 @@
                 <input type="text" id="appName" class="form-control" placeholder="Digite o nome do aplicativo" required>
             </div>
             <div class="form-group">
+                <label for="appLLDescription">Descrição curta</label>
+                <input type="text" id="appLLDescription" class="form-control" placeholder="Uma descrição curta" required>
+            </div>
+            <div class="form-group">
                 <label for="appDescription">Descrição</label>
                 <textarea id="appDescription" class="form-control" rows="3" placeholder="Digite uma breve descrição do aplicativo" required></textarea>
             </div>
@@ -94,6 +98,56 @@
                 <input type="file" id="appApk" class="form-control" accept=".apk" required>
             </div>
             <div class="form-group">
+                <label for="appLicense">Tipo de Licença</label>
+                <select id="appLicense" class="form-control" required>
+                   <!-- Licenças GPL -->
+                    <option value="GPL-1.0">GPL 1.0</option>
+                    <option value="GPL-2.0">GPL 2.0</option>
+                    <option value="GPL-3.0">GPL 3.0</option>
+                    <option value="LGPL-2.1">LGPL 2.1</option>
+                    <option value="LGPL-3.0">LGPL 3.0</option>
+
+                    <!-- Licenças BSD -->
+                    <option value="BSD-2-Clause">BSD 2-Clause</option>
+                    <option value="BSD-3-Clause">BSD 3-Clause</option>
+                    
+                    <!-- Licenças MIT -->
+                    <option value="MIT">MIT</option>
+
+                    <!-- Licenças Apache -->
+                    <option value="Apache-1.0">Apache 1.0</option>
+                    <option value="Apache-1.1">Apache 1.1</option>
+                    <option value="Apache-2.0">Apache 2.0</option>
+                    
+                    <!-- Licenças Mozilla -->
+                    <option value="MPL-1.1">MPL 1.1</option>
+                    <option value="MPL-2.0">MPL 2.0</option>
+                    
+                    <!-- Licenças Creative Commons -->
+                    <option value="CC0-1.0">CC0 1.0 (Domínio Público)</option>
+                    <option value="CC-BY-4.0">CC BY 4.0</option>
+                    <option value="CC-BY-SA-4.0">CC BY-SA 4.0</option>
+
+                    <!-- Licenças Eclipse -->
+                    <option value="EPL-1.0">EPL 1.0</option>
+                    <option value="EPL-2.0">EPL 2.0</option>
+                    
+                    <!-- Licenças de domínio público -->
+                    <option value="Unlicense">Unlicense</option>
+                    <option value="Public-Domain">Domínio Público</option>
+
+                    <!-- Licenças permissivas -->
+                    <option value="ISC">ISC</option>
+                    <option value="Zlib">Zlib</option>
+
+                    <!-- Licenças Proprietárias -->
+                    <option value="Proprietaria">Proprietária</option>
+
+                    <!-- Outro -->
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="appScreenshots">Capturas de Tela (PNG/JPG, até 5 imagens)</label>
                 <input type="file" id="appScreenshots" class="form-control" accept="image/png, image/jpeg" multiple>
             </div>
@@ -101,17 +155,26 @@
                 <label for="appRepoLink">Link do Repositório (GitHub/GitLab/Bitbucket)</label>
                 <input type="url" id="appRepoLink" class="form-control" placeholder="https://github.com/seu-repositorio" required>
             </div>
+            <div class="form-group">
+                <label for="appVersion">Número da Versão</label>
+                <input type="text" id="appVersion" class="form-control" placeholder="Exemplo: 1.0.0" required>
+            </div>
+            <div class="form-group">
+                <label for="appChangelog">Changelog do Lançamento</label>
+                <textarea id="appChangelog" class="form-control" rows="3" placeholder="Descrição das alterações nesta versão" required></textarea>
+            </div>
+            
             <button type="submit" class="btn btn-primary">Enviar Aplicativo</button>
         </form>
         <div class="back-link">
-            <a href="perfil-desenvolvedor.html">Voltar ao perfil</a>
+            <a href="perfil-dev.html">Voltar ao perfil</a>
         </div>
     </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- App Upload JS -->
-    <script src="envio-app.js"></script>
+    <script type="module" src="assets/js/envio-app.js"></script>
 </body>
 
 </html>
