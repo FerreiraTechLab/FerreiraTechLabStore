@@ -1,6 +1,12 @@
 import { db } from './firebaseConfig.js'; // Certifique-se que 'db' está sendo exportado corretamente de 'firebaseConfig.js'
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
+// Função para corrigir palavras específicas
+function corrigirTexto(texto) {
+  if (!texto) return texto;
+  return texto.replace(/\butilitario\b/gi, "Utilitário");
+}
+
 // Função para agrupar e exibir aplicativos
 async function displayApps() {
   const appsContainer = document.getElementById("appsContainer");
@@ -12,6 +18,15 @@ async function displayApps() {
 
     appsSnapshot.forEach((doc) => {
       const appData = doc.data();
+
+      console.log("Dados antes da correção:", appData); // Log para depuração
+
+      // Corrigir textos nos dados do app antes de usá-los
+      appData.nome = corrigirTexto(appData.nome);
+      appData.descricaoCurta = corrigirTexto(appData.descricaoCurta);
+      appData.categoria = corrigirTexto(appData.categoria);
+
+      console.log("Dados após a correção:", appData); // Log para verificar a correção
 
       // Verificar se a categoria já existe, se não, cria uma nova
       if (!categories[appData.categoria]) {
@@ -39,7 +54,7 @@ async function displayApps() {
 
       categories[category].forEach(appData => {
         const appCard = document.createElement("div");
-        console.log(appData.appId);
+        console.log("ID do app:", appData.appId); // Log para verificar ID do app
         appCard.classList.add("col-md-6", "col-lg-4");
         appCard.innerHTML = `
           <div class="project-card d-flex align-items-center">

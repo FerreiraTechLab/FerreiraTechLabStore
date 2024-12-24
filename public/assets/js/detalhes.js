@@ -21,17 +21,47 @@ async function displayAppDetails() {
             // Preencher os dados no HTML
             const appLogo = document.querySelector("#app-logo");
             const appName = document.querySelector("#app-name");
-            const appDescription = document.querySelector("#app-description");
+            const appDescription = document.getElementById("app-description");
             const shortDescription = document.querySelector("#short-description");
             const repoLink = document.querySelector("#repo-link");
             const apkLink = document.querySelector("#apk-link");
+            const projetoheader = document.getElementById("projetoheader");
+            
 
+            // Exemplo de preenchimento dos dados
+            document.getElementById("arch").textContent = Array.isArray(appData.arquiteturaSuportada) ? appData.arquiteturaSuportada.join(", ") : 'Não especificado';
+            document.getElementById("sizeDownload").textContent = appData.tamanhoDownload ? `~${appData.tamanhoDownload} MiB` : 'Tamanho não especificado';
+            document.getElementById("sizeInstalled").textContent = appData.tamanhoInstalado ? `~${appData.tamanhoInstalado} MiB` : 'Tamanho não especificado';
+
+
+
+            // Preencher funcionalidades
+            const funcionalidadesElement = document.querySelector('#app-functionalities');
+            if (appData.funcionalidades && typeof appData.funcionalidades === 'string') {
+                const funcionalidades = appData.funcionalidades.split(',');
+                funcionalidadesElement.innerHTML = funcionalidades.map(func => `<li>${func.trim()}</li>`).join('');
+            } else {
+                funcionalidadesElement.innerHTML = '<li>Não há funcionalidades registradas.</li>';
+            }
+
+            // Preencher requisitos de sistema
+            const requisitosElement = document.querySelector('#app-requirements');
+            if (appData.requisitos && typeof appData.requisitos === 'string') {
+                const requisitos = appData.requisitos.split(',');
+                requisitosElement.innerHTML = requisitos.map(req => `<li>${req.trim()}</li>`).join('');
+            } else {
+                requisitosElement.innerHTML = '<li>Não há requisitos de sistema registrados.</li>';
+            }
+
+            console.log(appData.descricao)
             if (appLogo) appLogo.src = appData.logoUrl;
             if (appName) appName.textContent = appData.nome;
-            if (appDescription) appDescription.textContent = appData.descricao;
-            if (shortDescription) shortDescription.textContent = appData.descricaoCurta;
+            document.getElementById("app-description").textContent = appData.descricao || "Sem descrição";
+            if (shortDescription) shortDescription.textContent = appData.descricao;
             if (repoLink) repoLink.href = appData.repoLink;
             if (apkLink) apkLink.href = appData.apkUrl;
+            if (projetoheader) projetoheader.textContent = appData.nome; // Atualiza o texto do elemento
+
 
             // Atualizar capturas de tela (se houver)
             if (appData.screenshotsUrls && appData.screenshotsUrls.length > 0) {
@@ -45,17 +75,22 @@ async function displayAppDetails() {
             }
 
             // Changelog (se houver)
+            // Changelog (se houver)
             const changelogList = document.querySelector("#changelog-list");
             if (changelogList) {
                 changelogList.innerHTML = ''; // Limpa a lista de changelog
-                if (appData.changelog && appData.changelog.length > 0) {
-                    appData.changelog.forEach(change => {
-                        const listItem = document.createElement('li');
-                        listItem.innerHTML = `<strong>${change.version}:</strong> ${change.description}`;
-                        changelogList.appendChild(listItem);
+                if (appData.changelog && typeof appData.changelog === 'string') {
+                    const changes = appData.changelog.split('\n'); // Divide o texto em linhas
+                    changes.forEach(change => {
+                        if (change.trim()) { // Ignorar linhas vazias
+                            const listItem = document.createElement('li');
+                            listItem.textContent = change.trim();
+                            changelogList.appendChild(listItem);
+                        }
                     });
                 }
             }
+
         } else {
             console.log("Documento não encontrado!");
         }
