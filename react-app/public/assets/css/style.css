@@ -1,0 +1,76 @@
+/* Estilos personalizados */
+body {
+    font-family: 'Roboto', sans-serif; 
+    background-color: #f8f9fa;
+}
+
+.hero-section {
+    
+    background-size: cover;
+    color: white;
+    padding: 100px 0; 
+    text-align: center; 
+    position: relative; /* Para posicionar o background */
+    overflow: hidden; /* Para esconder o background que sai da área */
+}
+
+.parallax-bg {
+    background-image: url('hero.jpg'); /* Substitua pela sua imagem */
+    background-size: cover;
+    background-attachment: fixed; /* Fixa o background */
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Posiciona o background atrás do conteúdo */
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 20px; 
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    margin-top: 0; 
+}
+
+.features-section {
+    padding: 50px 0;
+}
+
+.features-section .icon {
+    font-size: 2rem;
+    color: #196FB6;
+    margin-bottom: 20px;
+}
+
+.navbar-brand img {
+    width: 40px; 
+    margin-right: 10px;
+}
+
+.features-section .col-md-4:hover {
+    background-color: #e5e5ea; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    transition: all 0.3s ease; 
+    
+    transform: translateY(-5px); /* Eleva o item em 5px */
+}
+
+.features-section .icon {
+    animation: pulse 2s infinite;
+    font-size: 2rem;
+    color: #196FB6;
+    margin-bottom: 20px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.9); }
+    50% { transform: scale(0.98); }
+    100% { transform: scale(0.9); }
+}
