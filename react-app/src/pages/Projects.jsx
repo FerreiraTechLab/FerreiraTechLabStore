@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../services/firebaseConfig';
 import { Link } from 'react-router-dom';
+import '../Projects.css';
 
 function Projects() {
   const [categories, setCategories] = useState({});
@@ -11,6 +12,21 @@ function Projects() {
   const corrigirTexto = (texto) => {
     if (!texto) return texto;
     return texto.replace(/\butilitario\b/gi, 'Utilitário');
+  };
+
+  // Ícones para categorias
+  const categoryIcons = {
+    'Segurança': 'fa-shield-alt',
+    'Utilitário': 'fa-tools',
+    'Produtividade': 'fa-bolt',
+    'Multi-Plataforma': 'fa-globe',
+    'Em Breve': 'fa-rocket',
+    'default': 'fa-mobile-alt'
+  };
+
+  const getCategoryIcon = (category) => {
+    const iconClass = categoryIcons[category] || categoryIcons['default'];
+    return <i className={`fas ${iconClass}`}></i>;
   };
 
   useEffect(() => {
@@ -51,106 +67,160 @@ function Projects() {
 
   if (loading) {
     return (
-      <div className="container text-center py-5">
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Carregando...</span>
-        </div>
+      <div className="projects-loading">
+        <div className="projects-loading-spinner"></div>
+        <p className="projects-loading-text">Carregando projetos incríveis...</p>
       </div>
     );
   }
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="hero-section text-center">
+      {/* Modern Hero Section */}
+      <section className="projects-hero">
         <div className="container">
-          <h1>Nossos Projetos</h1>
-          <p className="lead">
-            Descubra as soluções inovadoras que estamos desenvolvendo para o
-            futuro.
-          </p>
+          <div className="projects-hero-content">
+            <h1>Nossos Projetos</h1>
+            <p>
+              Soluções inovadoras desenvolvidas com as melhores tecnologias e práticas do mercado.
+              Explore nosso portfólio de aplicações mobile e sistemas inteligentes.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Projects Container */}
-      <div className="container mt-5">
-        {/* Apps do Firestore por Categoria */}
-        {Object.keys(categories).length > 0 &&
-          Object.keys(categories).map((category) => (
-            <div key={category} className="mb-5">
-              <h2 className="category-title">{category}</h2>
-              <div className="projects-grid">
+      {/* Projects Categories */}
+      {Object.keys(categories).length > 0 &&
+        Object.keys(categories).map((category) => (
+          <section key={category} className="projects-category-section">
+            <div className="container">
+              <div className="category-header">
+                <div className="category-icon">
+                  {getCategoryIcon(category)}
+                </div>
+                <h2>{category}</h2>
+              </div>
+              <div className="modern-projects-grid">
                 {categories[category].map((app) => (
-                  <div key={app.appId} className="project-card">
-                    <img
-                      src={app.logoUrl || '/assets/img/logo.png'}
-                      alt={app.nome}
-                      className="project-icon"
-                    />
-                    <div className="project-info">
-                      <h3 className="project-title">{app.nome}</h3>
-                      <p className="project-description">
+                  <Link
+                    key={app.appId}
+                    to={`/project/${app.appId}`}
+                    className="modern-project-card"
+                  >
+                    <div className="project-card-image">
+                      <img
+                        src={app.logoUrl || '/assets/img/logo.png'}
+                        alt={app.nome}
+                        className="project-card-logo"
+                      />
+                    </div>
+                    <div className="project-card-body">
+                      <span className="project-status-badge status-active">Ativo</span>
+                      <h3 className="project-card-title">{app.nome}</h3>
+                      <p className="project-card-description">
                         {app.descricaoCurta}
                       </p>
-                      <Link
-                        to={`/project/${app.appId}`}
-                        className="btn btn-primary btn-sm details-button"
-                      >
-                        Ver Detalhes
-                      </Link>
+                      <div className="project-card-footer">
+                        <span className="modern-btn modern-btn-primary">
+                          <i className="fas fa-rocket"></i>
+                          Ver Detalhes
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
-          ))}
+          </section>
+        ))}
 
-        {/* Multi-Plataforma */}
-        <h2 className="category-title">Multi-Plataforma</h2>
-        <div className="projects-grid">
-          <div className="project-card">
-            <img
-              src="/assets/img/sharexpress/app-logo.png"
-              alt="ShareXpress"
-              className="project-icon"
-            />
-            <div className="project-info">
-              <h3 className="project-title">ShareXpress</h3>
-              <p className="project-description">
-                Uma solução eficiente para compartilhar arquivos e textos em
-                múltiplas plataformas.
-              </p>
-              <a
-                href="/projeto-sharexpress.html"
-                className="btn btn-primary btn-sm details-button"
-              >
-                Ver Detalhes
-              </a>
+      {/* Multi-Plataforma Section */}
+      <section className="projects-category-section">
+        <div className="container">
+          <div className="category-header">
+            <div className="category-icon">
+              <i className="fas fa-globe"></i>
+            </div>
+            <h2 style={{ color: '#1a1a2e' }}>Multi-Plataforma</h2>
+          </div>
+          <div className="modern-projects-grid">
+            <div className="modern-project-card">
+              <div className="project-card-image">
+                <img
+                  src="/assets/img/sharexpress/app-logo.png"
+                  alt="ShareXpress"
+                  className="project-card-logo"
+                />
+              </div>
+              <div className="project-card-body">
+                <span className="project-status-badge status-active">Ativo</span>
+                <h3 className="project-card-title" style={{ color: '#1a1a2e' }}>ShareXpress</h3>
+                <p className="project-card-description" style={{ color: '#1a1a2e' }}>
+                  Solução multiplataforma para compartilhar arquivos e textos de forma 
+                  rápida e segura entre diferentes dispositivos e sistemas operacionais.
+                </p>
+                <div className="project-card-footer">
+                  <a 
+                    href="/projeto-sharexpress.html" 
+                    className="modern-btn modern-btn-primary"
+                  >
+                    <i className="fas fa-rocket"></i>
+                    Ver Detalhes
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Em Breve */}
-        <h2 className="category-title">Em Breve</h2>
-        <div className="projects-grid">
-          <div className="project-card">
-            <img
-              src="/assets/img/torrentwave/app-logo.png"
-              alt="TorrentWave"
-              className="project-icon"
-            />
-            <div className="project-info">
-              <h3 className="project-title">TorrentWave</h3>
-              <p className="project-description">
-                Seu app de torrent para mobile, rápido e eficiente.
-              </p>
-              <button className="btn btn-secondary btn-sm details-button" disabled>
-                Em breve
-              </button>
+      {/* Em Breve Section */}
+      <section className="projects-category-section">
+        <div className="container">
+          <div className="category-header">
+            <div className="category-icon">
+              <i className="fas fa-rocket"></i>
+            </div>
+            <h2>Em Breve</h2>
+          </div>
+          <div className="modern-projects-grid">
+            <div className="modern-project-card">
+              <div className="project-card-image">
+                <img
+                  src="/assets/img/torrentwave/app-logo.png"
+                  alt="TorrentWave"
+                  className="project-card-logo"
+                />
+              </div>
+              <div className="project-card-body">
+                <span className="project-status-badge status-soon">Em Breve</span>
+                <h3 className="project-card-title">TorrentWave</h3>
+                <p className="project-card-description">
+                  Cliente torrent moderno e eficiente para dispositivos móveis, com 
+                  interface intuitiva e recursos avançados de gerenciamento.
+                </p>
+                <div className="project-card-footer">
+                  <button className="modern-btn modern-btn-disabled" disabled>
+                    <i className="fas fa-clock"></i>
+                    Em Desenvolvimento
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Empty State (caso não tenha apps) */}
+      {Object.keys(categories).length === 0 && (
+        <div className="projects-empty">
+          <div className="projects-empty-icon">
+            <i className="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Nenhum projeto encontrado</h3>
+          <p>Estamos trabalhando em novos projetos incríveis. Volte em breve!</p>
+        </div>
+      )}
     </>
   );
 }

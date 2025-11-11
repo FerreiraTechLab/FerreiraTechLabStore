@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../services/firebaseConfig';
+import '../ProjectDetails.css';
 
 function ProjectDetails() {
   const { appId } = useParams();
@@ -53,10 +54,9 @@ function ProjectDetails() {
 
   if (loading) {
     return (
-      <div className="container text-center py-5">
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Carregando...</span>
-        </div>
+      <div className="project-details-loading">
+        <div className="project-details-spinner"></div>
+        <p style={{ color: '#5f6368', fontSize: '1.1rem' }}>Carregando aplicativo...</p>
       </div>
     );
   }
@@ -64,7 +64,8 @@ function ProjectDetails() {
   if (!appData) {
     return (
       <div className="container text-center py-5">
-        <h2>Aplicativo não encontrado</h2>
+        <h2 style={{ color: '#202124', fontWeight: '500' }}>Aplicativo não encontrado</h2>
+        <p style={{ color: '#5f6368' }}>O aplicativo solicitado não existe ou foi removido.</p>
       </div>
     );
   }
