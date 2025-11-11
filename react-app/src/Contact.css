@@ -397,11 +397,16 @@
   .timeline-content,
   .timeline-item:nth-child(even) .timeline-content {
     flex: 1;
-    padding: 0 0 0 70px;
+    padding: 0 20px 0 70px;
   }
 
   .timeline-dot {
     left: 30px;
+  }
+
+  .timeline-card {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 }
 
@@ -464,12 +469,45 @@
     font-size: 2rem;
   }
 
+  .modern-timeline::before {
+    left: 20px;
+  }
+
+  .timeline-dot {
+    left: 20px;
+  }
+
+  .timeline-year,
+  .timeline-item:nth-child(even) .timeline-year {
+    padding: 0 15px 15px 50px;
+  }
+
+  .timeline-content,
+  .timeline-item:nth-child(even) .timeline-content {
+    padding: 0 15px 0 50px;
+  }
+
   .year-badge {
-    font-size: 1.1rem;
-    padding: 8px 20px;
+    font-size: 1rem;
+    padding: 6px 16px;
   }
 
   .timeline-card {
-    padding: 20px;
+    padding: 15px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .timeline-card li {
+    padding-left: 25px;
+    font-size: 0.95rem;
+  }
+
+  .timeline-card li::before {
+    font-size: 1rem;
+  }
+
+  .timeline-card li p {
+    font-size: 0.95rem;
   }
 }
