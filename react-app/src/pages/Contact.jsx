@@ -71,8 +71,8 @@ function Contact() {
       <section className="timeline-section">
         <div className="container">
           <div className="timeline-header">
-            <h2>Minha Trajetória</h2>
-            <p>Uma jornada de aprendizado contínuo e evolução profissional</p>
+            <h2 style={{ color: '#131320ff' }}>Minha Trajetória</h2>
+            <p style={{ color: '#131320ff' }}>Uma jornada de aprendizado contínuo e evolução profissional</p>
           </div>
 
           <div className="modern-timeline">

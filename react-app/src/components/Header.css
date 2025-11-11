@@ -1,0 +1,194 @@
+/* ==========================================
+   HEADER/NAVBAR - MODERN PROFESSIONAL STYLE
+   ========================================== */
+
+.modern-navbar {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+  padding: 1.5rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.modern-navbar.scrolled {
+  padding: 0.5rem 0;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+  border-bottom-color: rgba(0, 212, 255, 0.4);
+}
+
+/* Brand/Logo */
+.modern-navbar .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.modern-navbar .navbar-brand:hover {
+  color: #00d4ff !important;
+  transform: translateY(-2px);
+}
+
+.brand-logo {
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+  padding: 6px;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.modern-navbar .navbar-brand:hover .brand-logo {
+  box-shadow: 0 6px 20px rgba(0, 212, 255, 0.6);
+  transform: rotate(-5deg);
+}
+
+.brand-text {
+  background: linear-gradient(135deg, #ffffff 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+/* Navigation Links */
+.modern-navbar .navbar-nav {
+  gap: 8px;
+}
+
+.modern-navbar .nav-link {
+  color: #e0e0e0 !important;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 20px !important;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-navbar .nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00d4ff 0%, #0099ff 100%);
+  transition: width 0.3s ease;
+}
+
+.modern-navbar .nav-link:hover {
+  color: #ffffff !important;
+  background: rgba(0, 212, 255, 0.1);
+}
+
+.modern-navbar .nav-link:hover::before {
+  width: 80%;
+}
+
+.modern-navbar .nav-link.active {
+  color: #00d4ff !important;
+  background: rgba(0, 212, 255, 0.15);
+  box-shadow: 0 2px 10px rgba(0, 212, 255, 0.2);
+}
+
+/* Toggle Button for Mobile */
+.modern-navbar .navbar-toggler {
+  border: 2px solid rgba(0, 212, 255, 0.5);
+  background: rgba(0, 212, 255, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.modern-navbar .navbar-toggler:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: #00d4ff;
+}
+
+.modern-navbar .navbar-toggler:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 212, 255, 0.3);
+  outline: none;
+}
+
+.modern-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2300d4ff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  width: 24px;
+  height: 24px;
+}
+
+/* Container */
+.modern-navbar .container-fluid {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .modern-navbar .navbar-collapse {
+    background: rgba(22, 33, 62, 0.98);
+    border-radius: 12px;
+    margin-top: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+  }
+
+  .modern-navbar .navbar-nav {
+    gap: 5px;
+  }
+
+  .modern-navbar .nav-link {
+    padding: 12px 16px !important;
+    border-radius: 8px;
+  }
+
+  .modern-navbar .nav-link:hover {
+    background: rgba(0, 212, 255, 0.15);
+  }
+}
+
+@media (max-width: 768px) {
+  .modern-navbar {
+    padding: 0.75rem 0;
+  }
+
+  .modern-navbar .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .brand-logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .modern-navbar .navbar-brand {
+    font-size: 1.1rem;
+  }
+
+  .modern-navbar .nav-link {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .brand-text {
+    display: none;
+  }
+
+  .modern-navbar .navbar-brand {
+    gap: 0;
+  }
+}
