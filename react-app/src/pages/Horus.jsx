@@ -508,6 +508,12 @@ docker-compose -f docker-compose-gpu.yml up -d
               <li>Exportação de modelos treinados</li>
             </ul>
 
+            <div className="horus-screenshots">
+              <img src="/assets/img/horus/1762094258794.png" alt="Interface Desktop - Tela Principal" />
+              <img src="/assets/img/horus/1729628644600.png" alt="Interface Desktop - Treinamento" />
+              <img src="/assets/img/horus/1729628665997.png" alt="Interface Desktop - Métricas" />
+            </div>
+
             <h3>2. Dashboard Web (Monitoring)</h3>
             <p>Interface web responsiva para monitoramento em tempo real:</p>
             <ul>
@@ -517,6 +523,10 @@ docker-compose -f docker-compose-gpu.yml up -d
               <li>Alertas de incidentes</li>
               <li>Histórico de eventos</li>
             </ul>
+            <div className="horus-screenshots">
+              <img src="/assets/img/horus/1729629299664.png" alt="API REST - Endpoints" />
+              <img src="/assets/img/horus/1729864786627.png" alt="API REST - Documentação" />
+            </div>
 
             <h3>3. API REST</h3>
             <p>Backend Flask para integração e automação:</p>
@@ -526,6 +536,7 @@ docker-compose -f docker-compose-gpu.yml up -d
               <li>Consulta de histórico</li>
               <li>Gerenciamento de modelos</li>
             </ul>
+
           </section>
 
           {/* GPU */}

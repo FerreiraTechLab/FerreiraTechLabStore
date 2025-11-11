@@ -3,6 +3,17 @@
    Style inspired by React, Next.js, Vue docs
    ============================================ */
 
+/* Global Responsive Fixes */
+* {
+  box-sizing: border-box;
+}
+
+.symphony-docs * {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
 /* Hero Banner */
 .symphony-hero {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -130,6 +141,8 @@
 /* Main Layout */
 .symphony-docs {
   background: #f7fafc;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .symphony-main {
@@ -139,6 +152,8 @@
   display: grid;
   grid-template-columns: 250px 1fr 200px;
   gap: 40px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Sidebar Navigation */
@@ -196,13 +211,20 @@
   border-radius: 12px;
   padding: 50px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  min-width: 0;
+  width: 100%;
+  overflow-x: hidden;
 }
 
-.doc-section {
+.doc-section,
+.symphony-doc-section {
   margin-bottom: 60px;
+  width: 100%;
+  max-width: 100%;
 }
 
-.doc-section h1 {
+.doc-section h1,
+.symphony-doc-section h1 {
   font-size: 2.5rem;
   color: #1a202c;
   margin-bottom: 20px;
@@ -253,7 +275,8 @@
 }
 
 /* Info Cards */
-.info-card {
+.info-card,
+.alert {
   display: flex;
   gap: 20px;
   background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
@@ -261,17 +284,30 @@
   border-radius: 12px;
   margin: 30px 0;
   border-left: 4px solid #667eea;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-.info-card-icon {
+.info-card-icon,
+.alert-icon {
   font-size: 2.5rem;
   color: #667eea;
+  flex-shrink: 0;
 }
 
-.info-card-content h3 {
+.info-card-content,
+.alert-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.info-card-content h3,
+.alert-content h3 {
   margin-top: 0;
   color: #1a202c;
   font-size: 1.2rem;
+  overflow-wrap: break-word;
 }
 
 /* Feature Grid */
@@ -280,6 +316,8 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   margin: 30px 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .feature-item {
@@ -289,6 +327,8 @@
   background: white;
   border: 2px solid #e2e8f0;
   transition: all 0.3s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .feature-item:hover {
@@ -333,6 +373,9 @@
   overflow: hidden;
   margin: 20px 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .code-header {
@@ -366,6 +409,7 @@
   margin: 0;
   padding: 20px;
   overflow-x: auto;
+  max-width: 100%;
 }
 
 .code-block code {
@@ -373,6 +417,9 @@
   font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
   font-size: 0.9rem;
   line-height: 1.6;
+  white-space: pre;
+  word-wrap: normal;
+  overflow-wrap: normal;
 }
 
 /* Success Message */
@@ -397,6 +444,28 @@
   position: sticky;
   top: 20px;
   height: fit-content;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* Scrollbar personalizado para TOC */
+.symphony-toc::-webkit-scrollbar {
+  width: 4px;
+}
+
+.symphony-toc::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.symphony-toc::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 10px;
+}
+
+.symphony-toc::-webkit-scrollbar-thumb:hover {
+  background: #764ba2;
 }
 
 .symphony-toc h4 {
@@ -439,7 +508,23 @@
   }
 }
 
+@media (max-width: 992px) {
+  .symphony-main {
+    grid-template-columns: 1fr;
+  }
+
+  .symphony-sidebar {
+    position: relative;
+    top: 0;
+  }
+}
+
 @media (max-width: 768px) {
+  /* Hero Section */
+  .symphony-hero {
+    padding: 60px 15px;
+  }
+
   .hero-title {
     font-size: 2.5rem;
   }
@@ -448,9 +533,34 @@
     font-size: 1.1rem;
   }
 
+  .hero-stats {
+    gap: 20px;
+  }
+
+  .stat-item {
+    min-width: 100px;
+    padding: 15px;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+
+  /* Main Layout */
   .symphony-main {
     grid-template-columns: 1fr;
     gap: 20px;
+    padding: 20px 10px;
   }
 
   .symphony-sidebar {
@@ -458,11 +568,217 @@
     top: 0;
   }
 
+  .symphony-sidebar-nav {
+    padding: 15px;
+  }
+
   .symphony-content {
     padding: 30px 20px;
   }
 
+  /* Documentation Sections */
+  .symphony-doc-section h1 {
+    font-size: 2rem;
+  }
+
+  .symphony-doc-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .symphony-doc-section h3 {
+    font-size: 1.2rem;
+  }
+
+  .symphony-doc-section p.lead {
+    font-size: 1.1rem;
+  }
+
+  .symphony-doc-section p,
+  .symphony-doc-section li {
+    font-size: 1rem;
+  }
+
+  /* Feature Grid */
   .feature-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .feature-item {
+    padding: 25px 20px;
+  }
+
+  /* Code Blocks */
+  .code-block pre {
+    font-size: 0.85rem;
+    padding: 15px;
+  }
+
+  /* Alerts */
+  .alert {
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .alert-icon {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .alert-content {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Hero Section - Mobile */
+  .symphony-hero {
+    padding: 40px 15px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+
+  .hero-badge {
+    font-size: 0.75rem;
+    padding: 6px 15px;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .stat-item {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* Main Content - Mobile */
+  .symphony-content {
+    padding: 20px 15px;
+  }
+
+  .symphony-doc-section {
+    margin-bottom: 40px;
+  }
+
+  .symphony-doc-section h1 {
+    font-size: 1.6rem;
+  }
+
+  .symphony-doc-section h2 {
+    font-size: 1.3rem;
+  }
+
+  .symphony-doc-section h3 {
+    font-size: 1.1rem;
+  }
+
+  .symphony-doc-section p.lead {
+    font-size: 1rem;
+  }
+
+  .symphony-doc-section p,
+  .symphony-doc-section li {
+    font-size: 0.95rem;
+  }
+
+  /* Navigation - Mobile */
+  .symphony-nav-section a {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+  }
+
+  .symphony-nav-section h4 {
+    font-size: 0.8rem;
+  }
+
+  /* Feature Items - Mobile */
+  .feature-item {
+    padding: 20px 15px;
+  }
+
+  .feature-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+
+  .feature-item h4 {
+    font-size: 1.1rem;
+  }
+
+  .feature-item p {
+    font-size: 0.9rem;
+  }
+
+  /* Code Blocks - Mobile */
+  .code-block {
+    margin: 20px 0;
+  }
+
+  .code-block pre {
+    font-size: 0.75rem;
+    padding: 12px;
+    overflow-x: auto;
+  }
+
+  .code-header {
+    padding: 8px 12px;
+  }
+
+  .code-lang {
+    font-size: 0.75rem;
+  }
+
+  /* Alerts - Mobile */
+  .alert {
+    padding: 15px;
+    margin: 20px 0;
+  }
+
+  .alert-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .alert-content p {
+    font-size: 0.9rem;
+  }
+
+  /* Tech Badges - Mobile */
+  .tech-badge {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    margin: 3px;
   }
 }
