@@ -18,26 +18,26 @@ function Contact() {
             className="profile-photo"
           />
           <p className="highlighted-text">
-            Estudante do 8º semestre de Ciência da Computação na UESB.
+            Mestrando em Ciência da Computação no PGCOMP/UFBA - Linha de Ciência de Dados.
           </p>
           <p>
-            Atualmente, estou desenvolvendo meu TCC em Aprendizagem de Máquina
-            aplicado à segurança de redes elétricas. Sou apaixonado por
-            desenvolvimento mobile e outras áreas da programação, além de estar
-            me especializando na área de Inteligência Artificial.
+            Bacharel em Ciência da Computação pela UESB, atualmente desenvolvo pesquisas em 
+            Inteligência Artificial, computação em nuvem/borda e segurança cibernética. 
+            Meu foco está em sistemas inteligentes de orquestração para ambientes IoT/Edge/Cloud, 
+            aprendizado por reforço e detecção de ameaças em infraestruturas críticas.
           </p>
-          <h3>Tecnologias que domino</h3>
+          <h3>Tecnologias e Áreas de Atuação</h3>
           <p>
-            Domino diversas tecnologias, incluindo Python, Java, Kotlin, e
-            frameworks de desenvolvimento web como Django e Flask. Também tenho
-            experiência em desenvolvimento mobile com Android e sou o
-            idealizador da Ferreira Tech Lab, onde crio soluções tecnológicas
-            inovadoras para a comunidade.
+            Possuo expertise em Python, Java, Kotlin, C++, e frameworks como Django, Flask, 
+            TensorFlow e PyTorch. Experiência com desenvolvimento mobile Android, sistemas 
+            distribuídos, aprendizado de máquina e deep learning. Atualmente pesquiso 
+            orquestração inteligente em ambientes Edge/Cloud, aprendizado por reforço e 
+            sistemas de detecção de ameaças cibernéticas.
           </p>
           <p>
-            Estou sempre em busca de novos desafios e oportunidades para
-            expandir meus conhecimentos e contribuir para o avanço da
-            tecnologia.
+            Idealizador da Ferreira Tech Lab, onde desenvolvo projetos como Symphony 
+            (orquestrador cognitivo para IoT), Hórus-CDS (detecção de ataques em smart grids) 
+            e ConexAI (analytics e IA para setor financeiro).
           </p>
 
           {/* Timeline Section */}
@@ -180,6 +180,49 @@ function Contact() {
                   <p>
                     Comecei a desenvolver meu TCC em segurança de redes
                     elétricas.
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div className="timeline-event">
+              <h4>2025</h4>
+              <ul>
+                <li>
+                  <p>
+                    Atuei como professor de Robótica Educacional (6º ao 9º ano), 
+                    desenvolvendo material didático próprio e plataforma de interpretação 
+                    de pseudocódigo para apoio pedagógico.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Desenvolvimento do projeto ConexAI V3 (analytics e IA para setor financeiro), 
+                    com foco em retenção de contexto e geração automática de relatórios.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Consolidação do Hórus-CDS com quatro versões do agente de detecção 
+                    (RNN, LSTM, GRU, TCN), incluindo API Flask e interfaces desktop/web.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Ingresso no mestrado em Ciência da Computação (PGCOMP/UFBA) - 
+                    Linha de Ciência de Dados.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Início do projeto Symphony: orquestrador inteligente para ambientes 
+                    IoT/Edge/Cloud com aprendizado por reforço, métricas de SLA e 
+                    explainability. Preparação de artigo para SBRC 2026.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Colaboração com iniciativas jurídicas/tecnológicas (Integra Service / 
+                    PGFN-SERPRO) em projetos de ingestão de dados e busca semântica.
                   </p>
                 </li>
               </ul>

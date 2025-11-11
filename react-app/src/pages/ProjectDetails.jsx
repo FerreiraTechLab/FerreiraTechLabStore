@@ -160,16 +160,14 @@ function ProjectDetails() {
             <p>
               Acesso aos arquivos; Código auditável; Desenvolvedor verificado.
             </p>
-            {appData.repoUrl && (
-              <a
-                href={appData.repoUrl}
-                className="get-involved"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Envolver-se
-              </a>
-            )}
+            <a
+              href={appData.repoLink || appData.repoUrl || '#'}
+              className="get-involved"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Envolver-se
+            </a>
           </div>
           <div className="info-box">
             <i className="fas fa-building"></i>
