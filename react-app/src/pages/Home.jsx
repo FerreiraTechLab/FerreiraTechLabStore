@@ -94,6 +94,32 @@ function Home() {
               </div>
             </Link>
 
+            {/* MicroBotPy Project */}
+            <Link to="/microbotpy" className="project-featured-card">
+              <div className="project-featured-header">
+                <div className="project-featured-icon">
+                  <i className="fas fa-robot"></i>
+                </div>
+                <h3>MicroBotPy</h3>
+                <p>IC UESB • Registrado no INPI</p>
+              </div>
+              <div className="project-featured-body">
+                <p className="project-featured-description">
+                  Framework de alto nível para robótica educacional com MicroPython e ESP32.
+                  Simplifica a programação de microcontroladores, tornando a robótica
+                  acessível para iniciantes.
+                </p>
+                <div className="project-featured-tags">
+                  <span className="project-tag">MicroPython</span>
+                  <span className="project-tag">ESP32</span>
+                  <span className="project-tag">Robótica</span>
+                </div>
+                <span className="project-featured-link">
+                  Ver documentação <i className="fas fa-arrow-right"></i>
+                </span>
+              </div>
+            </Link>
+
             {/* Mobile Solutions */}
             <Link to="/projects" className="project-featured-card">
               <div className="project-featured-header">
@@ -128,7 +154,7 @@ function Home() {
         <div className="container">
           <div className="stats-grid">
             <div className="stat-item">
-              <span className="stat-number">2+</span>
+              <span className="stat-number">3+</span>
               <span className="stat-label">Projetos de Pesquisa</span>
             </div>
             <div className="stat-item">

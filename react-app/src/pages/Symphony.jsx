@@ -3,6 +3,7 @@ import '../SymphonyDocs.css';
 
 function Symphony() {
   const [activeSection, setActiveSection] = useState('intro');
+  const [copiedId, setCopiedId] = useState(null);
 
   const scrollToSection = (sectionId) => {
     setActiveSection(sectionId);
@@ -10,6 +11,12 @@ function Symphony() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  };
+
+  const handleCopy = (text, id) => {
+    navigator.clipboard.writeText(text);
+    setCopiedId(id);
+    setTimeout(() => setCopiedId(null), 2000);
   };
 
   return (
@@ -265,10 +272,11 @@ function Symphony() {
             <div className="code-block">
               <div className="code-header">
                 <span className="code-lang">Bash</span>
-                <button className="code-copy" onClick={() => {
-                  navigator.clipboard.writeText('git clone https://github.com/wesleiferreira98/The-Symphony-Project.git\ncd The-Symphony-Project\n./setup.sh --full\ncd symphony-web\n./start.sh');
-                }}>
-                  <i className="fas fa-copy"></i>
+                <button 
+                  className={`code-copy ${copiedId === 'setup' ? 'copied' : ''}`} 
+                  onClick={() => handleCopy('git clone https://github.com/wesleiferreira98/The-Symphony-Project.git\ncd The-Symphony-Project\n./setup.sh --full\ncd symphony-web\n./start.sh', 'setup')}
+                >
+                  <i className={`fas ${copiedId === 'setup' ? 'fa-check' : 'fa-copy'}`}></i>
                 </button>
               </div>
               <pre><code>{`# Clone o repositório

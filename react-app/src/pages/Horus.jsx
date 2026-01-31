@@ -3,6 +3,7 @@ import '../HorusDocs.css';
 
 function Horus() {
   const [activeSection, setActiveSection] = useState('intro');
+  const [copiedId, setCopiedId] = useState(null);
 
   const scrollToSection = (sectionId) => {
     setActiveSection(sectionId);
@@ -10,6 +11,12 @@ function Horus() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  };
+
+  const handleCopy = (text, id) => {
+    navigator.clipboard.writeText(text);
+    setCopiedId(id);
+    setTimeout(() => setCopiedId(null), 2000);
   };
 
   return (
@@ -332,10 +339,11 @@ function Horus() {
             <div className="horus-code-block">
               <div className="horus-code-header">
                 <span className="horus-code-lang">Bash</span>
-                <button className="horus-code-copy" onClick={() => {
-                  navigator.clipboard.writeText('git clone https://github.com/wesleiferreira98/Horus-CDS.git\ncd Horus-CDS\n./scripts/install.sh');
-                }}>
-                  <i className="fas fa-copy"></i>
+                <button 
+                  className={`horus-code-copy ${copiedId === 'quickstart' ? 'copied' : ''}`}
+                  onClick={() => handleCopy('git clone https://github.com/wesleiferreira98/Horus-CDS.git\ncd Horus-CDS\n./scripts/install.sh', 'quickstart')}
+                >
+                  <i className={`fas ${copiedId === 'quickstart' ? 'fa-check' : 'fa-copy'}`}></i>
                 </button>
               </div>
               <pre><code>{`git clone https://github.com/wesleiferreira98/Horus-CDS.git

@@ -51,6 +51,14 @@ function Header() {
             </Nav.Link>
             <Nav.Link 
               as={Link} 
+              to="/microbotpy"
+              className={location.pathname === '/microbotpy' ? 'active' : ''}
+              onClick={handleNavClick}
+            >
+              MicroBotPy
+            </Nav.Link>
+            <Nav.Link 
+              as={Link} 
               to="/projects"
               className={location.pathname === '/projects' ? 'active' : ''}
               onClick={handleNavClick}

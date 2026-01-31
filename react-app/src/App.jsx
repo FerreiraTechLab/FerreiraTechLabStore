@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Symphony from './pages/Symphony';
 import Horus from './pages/Horus';
+import MicroBotPy from './pages/MicroBotPy';
 import Projects from './pages/Projects';
 import ProjectDetails from './pages/ProjectDetails';
 import Contact from './pages/Contact';
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/symphony" element={<Symphony />} />
           <Route path="/horus" element={<Horus />} />
+          <Route path="/microbotpy" element={<MicroBotPy />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/project/:appId" element={<ProjectDetails />} />
           <Route path="/contact" element={<Contact />} />

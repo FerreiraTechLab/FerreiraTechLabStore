@@ -1,0 +1,1011 @@
+/* ============================================
+   MICROBOTPY DOCUMENTATION - ROBOTICS THEME
+   Style inspired by Arduino/Robotics dashboards
+   ============================================ */
+
+/* Global Responsive Fixes */
+* {
+  box-sizing: border-box;
+}
+
+.microbotpy-docs * {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Hero Banner */
+.microbotpy-hero {
+  background: linear-gradient(135deg, #0d9488 0%, #059669 50%, #047857 100%);
+  color: white;
+  padding: 80px 20px;
+  padding-top: 160px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Circuit Board Pattern Animation */
+.microbotpy-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    /* Horizontal circuit lines */
+    linear-gradient(90deg, transparent 0%, transparent 48%, rgba(52, 211, 153, 0.15) 48%, rgba(52, 211, 153, 0.15) 52%, transparent 52%),
+    /* Vertical circuit lines */
+    linear-gradient(0deg, transparent 0%, transparent 48%, rgba(52, 211, 153, 0.1) 48%, rgba(52, 211, 153, 0.1) 52%, transparent 52%),
+    /* Circuit nodes/dots */
+    radial-gradient(circle at 50% 50%, rgba(52, 211, 153, 0.3) 2px, transparent 2px);
+  background-size: 60px 60px, 60px 60px, 60px 60px;
+  animation: circuitMove 20s linear infinite;
+  opacity: 0.8;
+  z-index: 0;
+}
+
+/* LED Layer 1 - Green LEDs (soft blink) */
+.microbotpy-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(52, 211, 153, 0.8) 3px, transparent 3px),
+    radial-gradient(circle at 60% 20%, rgba(16, 185, 129, 0.7) 3px, transparent 3px),
+    radial-gradient(circle at 90% 40%, rgba(110, 231, 183, 0.6) 3px, transparent 3px),
+    radial-gradient(circle at 50% 90%, rgba(52, 211, 153, 0.7) 3px, transparent 3px);
+  animation: ledBlinkSoft 2.5s ease-in-out infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* LED Layer 2 - Red LEDs (digital/abrupt blink) */
+.microbotpy-hero-content::before {
+  content: '';
+  position: absolute;
+  top: -160px;
+  left: -50%;
+  right: -50%;
+  bottom: -80px;
+  background-image: 
+    radial-gradient(circle at 15% 45%, rgba(239, 68, 68, 0.9) 3px, transparent 3px),
+    radial-gradient(circle at 85% 25%, rgba(248, 113, 113, 0.8) 3px, transparent 3px),
+    radial-gradient(circle at 45% 85%, rgba(239, 68, 68, 0.7) 3px, transparent 3px);
+  animation: ledBlinkDigital 0.8s steps(2, end) infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* LED Layer 3 - Blue LEDs (medium blink) */
+.microbotpy-hero-content::after {
+  content: '';
+  position: absolute;
+  top: -160px;
+  left: -50%;
+  right: -50%;
+  bottom: -80px;
+  background-image: 
+    radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.8) 4px, transparent 4px),
+    radial-gradient(circle at 10% 60%, rgba(96, 165, 250, 0.7) 3px, transparent 3px),
+    radial-gradient(circle at 70% 50%, rgba(59, 130, 246, 0.6) 4px, transparent 4px);
+  animation: ledBlinkMedium 1.5s ease-in-out infinite alternate;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* LED Layer 4 - Yellow/Orange LEDs (fast digital) */
+.microbotpy-stats::before {
+  content: '';
+  position: absolute;
+  top: -300px;
+  left: -200%;
+  right: -200%;
+  bottom: -200px;
+  background-image: 
+    radial-gradient(circle at 30% 80%, rgba(251, 191, 36, 0.9) 3px, transparent 3px),
+    radial-gradient(circle at 95% 55%, rgba(245, 158, 11, 0.8) 3px, transparent 3px),
+    radial-gradient(circle at 5% 20%, rgba(251, 191, 36, 0.7) 3px, transparent 3px);
+  animation: ledBlinkFast 0.5s steps(2, end) infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.microbotpy-stats {
+  position: relative;
+}
+
+@keyframes circuitMove {
+  0% {
+    background-position: 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 60px 0, 0 60px, 60px 60px;
+  }
+}
+
+/* Soft/smooth LED blink */
+@keyframes ledBlinkSoft {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+/* Digital/abrupt LED blink (like digital port) */
+@keyframes ledBlinkDigital {
+  0%, 49% {
+    opacity: 0;
+  }
+  50%, 100% {
+    opacity: 1;
+  }
+}
+
+/* Medium smooth blink */
+@keyframes ledBlinkMedium {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+/* Fast digital blink */
+@keyframes ledBlinkFast {
+  0%, 49% {
+    opacity: 0.1;
+  }
+  50%, 100% {
+    opacity: 0.95;
+  }
+}
+
+.microbotpy-hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* INPI Badge */
+.microbotpy-inpi-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-right: 15px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #d1fae5;
+}
+
+.microbotpy-inpi-badge i {
+  color: #34d399;
+}
+
+.microbotpy-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #064e3b;
+  text-shadow: none;
+  letter-spacing: 0.5px;
+  animation: microbotFadeInUp 0.6s ease-out forwards;
+}
+
+.microbotpy-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 20px rgba(16, 185, 129, 0.5);
+  background: linear-gradient(135deg, #ffffff 0%, #34d399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: microbotFadeInUp 0.6s ease-out 0.1s forwards;
+  opacity: 0;
+}
+
+.microbotpy-subtitle {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  color: #d1fae5;
+  animation: microbotFadeInUp 0.6s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+/* Hero Stats */
+.microbotpy-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+  animation: microbotFadeInUp 0.6s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.microbotpy-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: rgba(16, 185, 129, 0.15);
+  border-radius: 12px;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  min-width: 150px;
+  animation: microbotScaleIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.microbotpy-stat-item:nth-child(1) { animation-delay: 0.4s; }
+.microbotpy-stat-item:nth-child(2) { animation-delay: 0.5s; }
+.microbotpy-stat-item:nth-child(3) { animation-delay: 0.6s; }
+
+.microbotpy-stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  display: block;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.microbotpy-stat-label {
+  font-size: 0.9rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 8px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Hero Actions */
+.microbotpy-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: microbotFadeInUp 0.6s ease-out 0.5s forwards;
+  opacity: 0;
+}
+
+.microbotpy-btn-primary,
+.microbotpy-btn-secondary,
+.microbotpy-btn-tertiary {
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.microbotpy-btn-primary {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  color: #064e3b;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.microbotpy-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+  color: #064e3b;
+}
+
+.microbotpy-btn-secondary {
+  background: transparent;
+  color: #34d399;
+  border: 2px solid #34d399;
+}
+
+.microbotpy-btn-secondary:hover {
+  background: rgba(52, 211, 153, 0.1);
+  color: #34d399;
+}
+
+.microbotpy-btn-tertiary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.microbotpy-btn-tertiary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* Main Layout */
+.microbotpy-docs {
+  background: #f0fdf4;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.microbotpy-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: 250px 1fr 200px;
+  gap: 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Sidebar Navigation */
+.microbotpy-sidebar {
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.microbotpy-sidebar-nav {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-left: 3px solid #10b981;
+}
+
+.microbotpy-nav-section {
+  margin-bottom: 25px;
+}
+
+.microbotpy-nav-section h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #065f46;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.microbotpy-nav-section a {
+  display: block;
+  padding: 8px 15px;
+  color: #374151;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  margin-bottom: 4px;
+  border-left: 3px solid transparent;
+}
+
+.microbotpy-nav-section a:hover {
+  background: #d1fae5;
+  color: #059669;
+  border-left-color: #10b981;
+}
+
+.microbotpy-nav-section a.active {
+  background: linear-gradient(135deg, #d1fae515 0%, #10b98115 100%);
+  color: #059669;
+  font-weight: 600;
+  border-left-color: #10b981;
+}
+
+/* Content Area */
+.microbotpy-content {
+  background: white;
+  border-radius: 12px;
+  padding: 50px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  min-width: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.microbotpy-content h1 {
+  font-size: 2.5rem;
+  color: #065f46;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.microbotpy-content h2 {
+  font-size: 1.8rem;
+  color: #065f46;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #d1fae5;
+}
+
+.microbotpy-content h3 {
+  font-size: 1.4rem;
+  color: #047857;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.microbotpy-content h4 {
+  font-size: 1.1rem;
+  color: #059669;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.microbotpy-content p {
+  color: #374151;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.microbotpy-content .lead {
+  font-size: 1.15rem;
+  color: #4b5563;
+  line-height: 1.9;
+  margin-bottom: 25px;
+}
+
+.microbotpy-content ul,
+.microbotpy-content ol {
+  color: #374151;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  padding-left: 25px;
+}
+
+.microbotpy-content li {
+  margin-bottom: 8px;
+}
+
+.microbotpy-content code {
+  background: #ecfdf5;
+  color: #059669;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'Fira Code', 'Monaco', monospace;
+}
+
+/* Document Section */
+.microbotpy-doc-section {
+  margin-bottom: 60px;
+  scroll-margin-top: 100px;
+}
+
+/* Code Blocks */
+.microbotpy-code-block {
+  background: #1e293b;
+  border-radius: 12px;
+  margin: 25px 0;
+  overflow: visible;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.microbotpy-code-header {
+  background: #334155;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px 12px 0 0;
+  position: relative;
+}
+
+.microbotpy-code-lang {
+  color: #10b981;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.microbotpy-code-block pre {
+  margin: 0;
+  padding: 20px;
+  overflow-x: auto;
+  font-family: 'Fira Code', 'Monaco', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.microbotpy-code-block code {
+  color: #e2e8f0;
+  background: none;
+  padding: 0;
+}
+
+/* Alerts */
+.microbotpy-alert {
+  border-radius: 12px;
+  padding: 20px 25px;
+  margin: 25px 0;
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.microbotpy-alert-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.microbotpy-alert-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+}
+
+.microbotpy-alert-content p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.microbotpy-alert-info {
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  border-left: 4px solid #10b981;
+}
+
+.microbotpy-alert-info .microbotpy-alert-icon {
+  color: #10b981;
+}
+
+.microbotpy-alert-info .microbotpy-alert-content h3 {
+  color: #065f46;
+}
+
+.microbotpy-alert-info .microbotpy-alert-content p {
+  color: #047857;
+}
+
+.microbotpy-alert-warning {
+  background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%);
+  border-left: 4px solid #eab308;
+}
+
+.microbotpy-alert-warning .microbotpy-alert-icon {
+  color: #eab308;
+}
+
+.microbotpy-alert-warning .microbotpy-alert-content h3 {
+  color: #713f12;
+}
+
+.microbotpy-alert-warning .microbotpy-alert-content p {
+  color: #854d0e;
+}
+
+/* Alert Success - INPI Style */
+.microbotpy-alert-success {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-left: 4px solid #22c55e;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15);
+}
+
+.microbotpy-alert-success .microbotpy-alert-icon {
+  color: #15803d;
+  font-size: 2rem;
+}
+
+.microbotpy-alert-success .microbotpy-alert-content h3 {
+  color: #14532d;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.microbotpy-alert-success .microbotpy-alert-content p {
+  color: #166534;
+  line-height: 1.6;
+}
+
+/* Feature Grid */
+.microbotpy-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin: 30px 0;
+}
+
+.microbotpy-feature-item {
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+  border-radius: 12px;
+  padding: 25px;
+  border: 1px solid #d1fae5;
+  transition: all 0.3s ease;
+}
+
+.microbotpy-feature-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+  border-color: #10b981;
+}
+
+.microbotpy-feature-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.microbotpy-feature-item h4 {
+  color: #065f46;
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.microbotpy-feature-item p {
+  color: #4b5563;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Tech Badges */
+.microbotpy-tech-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  color: #065f46;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 5px;
+  border: 1px solid #6ee7b7;
+}
+
+/* Table of Contents */
+.microbotpy-toc {
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.microbotpy-toc h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #065f46;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.microbotpy-toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.microbotpy-toc li {
+  margin-bottom: 8px;
+}
+
+.microbotpy-toc a {
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  display: block;
+  padding: 4px 0;
+}
+
+.microbotpy-toc a:hover {
+  color: #10b981;
+}
+
+/* Screenshots */
+.microbotpy-screenshots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.microbotpy-screenshots img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.microbotpy-screenshots img:hover {
+  transform: scale(1.02);
+}
+
+/* ============================================
+   HERO ANIMATIONS
+   ============================================ */
+
+@keyframes microbotFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes microbotScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Robot arm animation for hero */
+@keyframes robotPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3),
+                inset 0 0 20px rgba(16, 185, 129, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(16, 185, 129, 0.5),
+                inset 0 0 40px rgba(16, 185, 129, 0.1);
+  }
+}
+
+/* ============================================
+   COPY BUTTON FEEDBACK - GREEN STYLE
+   ============================================ */
+
+.microbotpy-code-copy {
+  position: relative;
+  background: transparent;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.microbotpy-code-copy:hover {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: #10b981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+.microbotpy-code-copy.copied {
+  color: #22c55e;
+  border-color: #22c55e;
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.microbotpy-code-copy.copied::after {
+  content: 'Copiado!';
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  animation: microbotTooltipFade 2s ease-out forwards;
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
+  z-index: 100;
+}
+
+@keyframes microbotTooltipFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(5px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .microbotpy-main {
+    grid-template-columns: 220px 1fr;
+  }
+
+  .microbotpy-toc {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .microbotpy-main {
+    grid-template-columns: 1fr;
+    padding: 20px 15px;
+  }
+
+  .microbotpy-sidebar {
+    position: static;
+    margin-bottom: 20px;
+  }
+
+  .microbotpy-sidebar-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .microbotpy-nav-section {
+    margin-bottom: 0;
+    flex: 1;
+    min-width: 150px;
+  }
+
+  .microbotpy-content {
+    padding: 30px 20px;
+  }
+
+  .microbotpy-content h1 {
+    font-size: 2rem;
+  }
+
+  .microbotpy-content h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hero - Mobile */
+  .microbotpy-hero {
+    padding: 60px 15px;
+    padding-top: 120px;
+  }
+
+  .microbotpy-title {
+    font-size: 2.2rem;
+  }
+
+  .microbotpy-subtitle {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+
+  .microbotpy-stats {
+    gap: 15px;
+  }
+
+  .microbotpy-stat-item {
+    padding: 15px;
+    min-width: 100px;
+  }
+
+  .microbotpy-stat-number {
+    font-size: 1.8rem;
+  }
+
+  .microbotpy-stat-label {
+    font-size: 0.75rem;
+  }
+
+  .microbotpy-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .microbotpy-btn-primary,
+  .microbotpy-btn-secondary,
+  .microbotpy-btn-tertiary {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+
+  /* Content - Mobile */
+  .microbotpy-content {
+    padding: 25px 15px;
+  }
+
+  .microbotpy-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .microbotpy-content h2 {
+    font-size: 1.4rem;
+    margin-top: 35px;
+  }
+
+  .microbotpy-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .microbotpy-content .lead {
+    font-size: 1rem;
+  }
+
+  /* Feature Grid - Mobile */
+  .microbotpy-feature-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .microbotpy-feature-item {
+    padding: 20px;
+  }
+
+  /* Code Blocks - Mobile */
+  .microbotpy-code-block {
+    margin: 20px 0;
+    border-radius: 8px;
+  }
+
+  .microbotpy-code-block pre {
+    font-size: 0.75rem;
+    padding: 12px;
+    overflow-x: auto;
+  }
+
+  .microbotpy-code-header {
+    padding: 8px 12px;
+  }
+
+  .microbotpy-code-lang {
+    font-size: 0.75rem;
+  }
+
+  /* Alerts - Mobile */
+  .microbotpy-alert {
+    padding: 15px;
+    margin: 20px 0;
+  }
+
+  .microbotpy-alert-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .microbotpy-alert-content p {
+    font-size: 0.9rem;
+  }
+
+  /* Tech Badges - Mobile */
+  .microbotpy-tech-badge {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    margin: 3px;
+  }
+}

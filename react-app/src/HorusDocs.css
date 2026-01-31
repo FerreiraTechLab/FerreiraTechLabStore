@@ -156,6 +156,7 @@
 .horus-btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+  color: #1a1a2e;
 }
 
 .horus-btn-secondary {
@@ -166,6 +167,7 @@
 
 .horus-btn-secondary:hover {
   background: rgba(0, 212, 255, 0.1);
+  color: #00d4ff;
 }
 
 /* Main Layout */
@@ -438,7 +440,7 @@
 .horus-code-block {
   background: #1a1a2e;
   border-radius: 12px;
-  overflow: hidden;
+  overflow: visible;
   margin: 20px 0;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   border: 1px solid #00d4ff;
@@ -454,6 +456,9 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #00d4ff;
+  border-radius: 12px 12px 0 0;
+  position: relative;
+  overflow: visible;
 }
 
 .horus-code-lang {
@@ -885,4 +890,247 @@
     padding: 4px 8px;
     margin: 3px;
   }
+}
+
+/* ============================================
+   HERO ANIMATIONS - CYBERSECURITY THEME
+   ============================================ */
+
+/* Fade in up animation */
+@keyframes horusFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale in animation */
+@keyframes horusScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Cyber pulse animation */
+@keyframes cyberPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3),
+                inset 0 0 20px rgba(0, 212, 255, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.6),
+                inset 0 0 40px rgba(0, 212, 255, 0.1);
+  }
+}
+
+/* Scan line animation */
+@keyframes scanLine {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* Glitch effect */
+@keyframes glitch {
+  0%, 90%, 100% {
+    transform: translate(0);
+    text-shadow: 0 2px 20px rgba(0, 212, 255, 0.5);
+  }
+  92% {
+    transform: translate(-2px, 1px);
+    text-shadow: -2px 0 #ff0040, 2px 0 #00d4ff;
+  }
+  94% {
+    transform: translate(2px, -1px);
+    text-shadow: 2px 0 #ff0040, -2px 0 #00d4ff;
+  }
+  96% {
+    transform: translate(-1px, 2px);
+    text-shadow: -2px 0 #ff0040, 2px 0 #00d4ff;
+  }
+  98% {
+    transform: translate(1px, -2px);
+    text-shadow: 2px 0 #ff0040, -2px 0 #00d4ff;
+  }
+}
+
+/* Matrix rain effect */
+@keyframes matrixRain {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+/* Cyber grid pulse */
+@keyframes gridPulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Apply animations to hero elements */
+.horus-hero {
+  position: relative;
+}
+
+.horus-hero::before {
+  animation: gridPulse 4s ease-in-out infinite;
+}
+
+.horus-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+  animation: scanLine 3s linear infinite;
+  pointer-events: none;
+}
+
+.horus-badge {
+  animation: horusFadeInUp 0.6s ease-out forwards;
+}
+
+.horus-title {
+  animation: horusFadeInUp 0.6s ease-out 0.1s forwards, glitch 5s ease-in-out infinite 2s;
+  opacity: 0;
+}
+
+.horus-subtitle {
+  animation: horusFadeInUp 0.6s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.horus-stats {
+  animation: horusFadeInUp 0.6s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.horus-stat-item {
+  animation: horusScaleIn 0.5s ease-out forwards, cyberPulse 3s ease-in-out infinite;
+  opacity: 0;
+}
+
+.horus-stat-item:nth-child(1) { animation-delay: 0.4s, 0s; }
+.horus-stat-item:nth-child(2) { animation-delay: 0.5s, 0.5s; }
+.horus-stat-item:nth-child(3) { animation-delay: 0.6s, 1s; }
+
+.horus-actions {
+  animation: horusFadeInUp 0.6s ease-out 0.5s forwards;
+  opacity: 0;
+}
+
+.horus-btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.horus-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* ============================================
+   COPY BUTTON FEEDBACK - CYBER STYLE
+   ============================================ */
+
+.horus-code-copy {
+  position: relative;
+  background: transparent;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: #00d4ff;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.horus-code-copy:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: #00d4ff;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+}
+
+.horus-code-copy.copied {
+  color: #00ff88;
+  border-color: #00ff88;
+  background: rgba(0, 255, 136, 0.1);
+}
+
+.horus-code-copy.copied::after {
+  content: 'Copiado!';
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+  color: #1a1a2e;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  animation: horusTooltipFade 2s ease-out forwards;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+}
+
+@keyframes horusTooltipFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(5px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Digital noise effect on hero */
+.horus-hero-content {
+  position: relative;
+  z-index: 2;
 }
