@@ -6,7 +6,7 @@ firebaseConfig.js
 firebase-debug.log
 cors.json
 package-lock.json
-package.json
+
 node_modules/
 
 # React App
